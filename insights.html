@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Insights — SJ Remote Solutions</title>
+  <meta name="description" content="Independent AI governance and compliance advisory for UK recruitment agencies. ICO ADM, UK GDPR Article 22, and DUAA 2025 specialists." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal:        #3DCFBF;
+      --teal-light:  #EAF8F6;
+      --teal-dark:   #28A99A;
+      --charcoal:    #2E2E2E;
+      --charcoal-mid:#4A4A4A;
+      --grey:        #9B9B9B;
+      --grey-light:  #F2F2F2;
+      --border:      #EBEBEB;
+      --blush:       #FFB3BC;
+      --blush-light: #FFF0F2;
+      --surface:     #FAFAF9;
+      --white:       #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', 'Segoe UI', sans-serif;
+      background: linear-gradient(160deg, #F4F6F6 0%, #ECF0F0 50%, #E5EBEB 100%);
+      color: var(--charcoal);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', Georgia, serif;
+      line-height: 1.2;
+      color: var(--charcoal);
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: white;
+      border-bottom: 1px solid var(--border);
+      padding: 1.1rem 2rem;
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem; font-weight: 700;
+      color: var(--charcoal);
+      letter-spacing: 0.05em;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .nav-logo-mark {
+      width: 32px; height: 32px;
+      background: var(--charcoal);
+      border-radius: 7px;
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-size: 12px; font-weight: 700; letter-spacing: 0.05em;
+    }
+    .nav-links { display: flex; align-items: center; gap: 2rem; }
+    .nav-links a { font-size: 0.875rem; color: var(--grey); font-weight: 400; transition: color 0.15s; }
+    .nav-links a:hover { color: var(--charcoal); }
+    .btn-nav {
+      background: var(--charcoal); color: white;
+      font-size: 0.875rem; font-weight: 500;
+      padding: 0.6rem 1.25rem; border-radius: 8px;
+      transition: background 0.15s; letter-spacing: 0.02em;
+    }
+    .btn-nav:hover { background: var(--charcoal-mid); }
+
+    /* HERO */
+    .hero {
+      background: transparent;
+      padding: 6rem 2rem 5rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-inner { max-width: 860px; margin: 0 auto; }
+
+    .hero-logo-svg { max-width: 560px; margin: 0 auto 2.5rem; display: block; }
+
+    .hero h1 {
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      font-weight: 500;
+      color: var(--charcoal);
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+    .hero h1 em { color: var(--teal); font-style: italic; }
+    .hero p {
+      font-size: 1.1rem; color: #6B6B6B; font-weight: 300;
+      max-width: 600px; margin: 0 auto 2.5rem;
+    }
+    .hero-ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--charcoal); color: white;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem; font-weight: 500;
+      padding: 0.85rem 1.75rem; border-radius: 10px;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      transition: background 0.15s; letter-spacing: 0.02em; border: none; cursor: pointer;
+    }
+    .btn-primary:hover { background: var(--charcoal-mid); }
+    .btn-teal {
+      background: var(--teal); color: white;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem; font-weight: 500;
+      padding: 0.85rem 1.75rem; border-radius: 10px;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      transition: background 0.15s; letter-spacing: 0.02em; border: none; cursor: pointer;
+    }
+    .btn-teal:hover { background: var(--teal-dark); }
+    .btn-outline {
+      background: white; color: var(--charcoal);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem; font-weight: 500;
+      padding: 0.85rem 1.75rem; border-radius: 10px;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      transition: all 0.15s; letter-spacing: 0.02em;
+      border: 1.5px solid var(--border); cursor: pointer;
+    }
+    .btn-outline:hover { border-color: var(--charcoal); }
+
+    /* SECTION */
+    section { padding: 6rem 2rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.7rem; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--grey); margin-bottom: 1rem;
+    }
+    .section-title {
+      font-size: clamp(1.75rem, 3vw, 2.25rem);
+      font-weight: 500; margin-bottom: 1rem;
+    }
+    .teal-rule {
+      width: 2.5rem; height: 2px;
+      background: var(--teal); border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+
+    /* CHECKER CTA STRIP */
+    .checker-strip {
+      background: var(--teal-light);
+      border-top: 1px solid #B0E8E2;
+      border-bottom: 1px solid #B0E8E2;
+      padding: 2rem;
+    }
+    .checker-strip-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 2rem; flex-wrap: wrap;
+    }
+    .checker-strip h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; font-weight: 500;
+      color: var(--teal-dark); margin-bottom: 0.25rem;
+    }
+    .checker-strip p { font-size: 0.9rem; color: var(--teal-dark); opacity: 0.8; }
+
+    /* WHAT WE DO */
+    .what-bg { background: var(--surface); }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+    .tag {
+      font-size: 0.8rem; font-weight: 500;
+      padding: 0.35rem 0.875rem;
+      border-radius: 999px;
+      background: white; border: 1px solid var(--border);
+      color: var(--charcoal-mid);
+    }
+
+    /* PRINCIPLES */
+    .principles-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .principle-card {
+      background: white; border: 1px solid var(--border);
+      border-radius: 16px; padding: 1.75rem;
+    }
+    .principle-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: var(--teal-light);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.25rem; margin-bottom: 1rem;
+    }
+    .principle-card h3 { font-size: 1rem; font-weight: 500; margin-bottom: 0.5rem; }
+    .principle-card p { font-size: 0.875rem; color: #6B6B6B; font-weight: 300; line-height: 1.65; }
+
+    /* SERVICES */
+    .services-bg { background: white; }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .service-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 2rem; position: relative;
+    }
+    .service-card.featured {
+      border-color: var(--teal); border-width: 1.5px;
+      background: white;
+    }
+    .service-badge {
+      display: inline-block; font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      background: var(--teal); color: white;
+      padding: 0.2rem 0.6rem; border-radius: 4px;
+      margin-bottom: 1rem;
+    }
+    .service-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem; font-weight: 400;
+      color: var(--border); letter-spacing: -0.02em;
+      line-height: 1; margin-bottom: 0.75rem;
+    }
+    .service-card h3 { font-size: 1.2rem; font-weight: 500; margin-bottom: 0.75rem; }
+    .service-card > p { font-size: 0.9rem; color: #6B6B6B; font-weight: 300; margin-bottom: 1.25rem; }
+    .service-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .service-list li {
+      font-size: 0.875rem; color: var(--charcoal-mid);
+      display: flex; align-items: flex-start; gap: 0.5rem;
+    }
+    .service-list li::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--teal); flex-shrink: 0; margin-top: 0.55rem;
+    }
+
+    /* PRICING */
+    .price-tag {
+      margin-top: 1.5rem; padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem; font-weight: 500; color: var(--charcoal);
+    }
+    .price-tag span { font-family: 'DM Sans', sans-serif; font-size: 0.8rem; color: var(--grey); font-weight: 400; }
+
+    /* HOW IT WORKS */
+    .how-bg { background: var(--surface); }
+    .steps-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem; margin-top: 3rem;
+    }
+    .step { text-align: center; }
+    .step-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem; font-weight: 400;
+      color: var(--border); letter-spacing: -0.02em;
+      line-height: 1; margin-bottom: 0.5rem;
+    }
+    .step .teal-rule { margin: 0 auto 1rem; }
+    .step h3 { font-size: 1rem; font-weight: 500; margin-bottom: 0.5rem; }
+    .step p { font-size: 0.875rem; color: #6B6B6B; font-weight: 300; }
+
+    /* DISCLAIMER */
+    .disclaimer {
+      background: var(--grey-light); border-radius: 12px;
+      padding: 1.25rem 1.5rem; margin-top: 3rem;
+      display: flex; gap: 1rem; align-items: flex-start;
+    }
+    .disclaimer-icon { color: var(--grey); font-size: 1.1rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .disclaimer p { font-size: 0.85rem; color: #6B6B6B; font-weight: 300; line-height: 1.65; }
+
+    /* CONTACT */
+    .contact-bg { background: white; }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: start;
+    }
+    @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; gap: 3rem; } }
+    .contact-details { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+    .contact-item {
+      display: flex; align-items: center; gap: 0.75rem;
+      font-size: 0.9rem; color: #6B6B6B;
+    }
+    .contact-item-icon {
+      width: 36px; height: 36px; border-radius: 8px;
+      background: var(--teal-light); flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem;
+    }
+
+    /* FORM */
+    .form { display: flex; flex-direction: column; gap: 1rem; }
+    .form-label {
+      display: block; font-size: 0.7rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--grey); margin-bottom: 0.375rem;
+    }
+    .form-input, .form-select, .form-textarea {
+      width: 100%; padding: 0.75rem 1rem;
+      border: 1px solid var(--border); border-radius: 10px;
+      font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+      color: var(--charcoal); background: white; outline: none;
+      transition: border-color 0.15s;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--teal); }
+    .form-textarea { resize: vertical; min-height: 120px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 540px) { .form-row { grid-template-columns: 1fr; } }
+    .form-note { font-size: 0.75rem; color: var(--grey); font-weight: 300; margin-top: 0.5rem; }
+
+    /* CTA DARK */
+    .cta-dark { background: var(--charcoal); padding: 5rem 2rem; text-align: center; }
+    .cta-dark h2 { color: white; font-size: clamp(1.75rem, 3vw, 2.25rem); font-weight: 400; margin-bottom: 1rem; }
+    .cta-dark p { color: var(--grey); font-size: 0.95rem; font-weight: 300; margin-bottom: 2rem; }
+    .cta-dark .teal-rule { margin: 0 auto 1.5rem; }
+
+    /* FOOTER */
+    footer {
+      background: white; border-top: 1px solid var(--border);
+      padding: 3rem 2rem;
+    }
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+    }
+    @media (max-width: 768px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
+    .footer-brand p { font-size: 0.85rem; color: var(--grey); font-weight: 300; margin: 1rem 0; line-height: 1.65; }
+    .footer-col h4 {
+      font-family: 'DM Sans', sans-serif; font-size: 0.7rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--grey); margin-bottom: 1rem;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .footer-col ul li a { font-size: 0.875rem; color: var(--charcoal-mid); transition: color 0.15s; }
+    .footer-col ul li a:hover { color: var(--teal); }
+    .footer-bottom {
+      max-width: 1100px; margin: 2rem auto 0;
+      padding-top: 1.5rem; border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-bottom p { font-size: 0.8rem; color: var(--grey); }
+    .insured-badge {
+      font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--grey); background: var(--grey-light);
+      padding: 0.3rem 0.75rem; border-radius: 4px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      section { padding: 4rem 1.25rem; }
+      .hero { padding: 4rem 1.25rem 3rem; }
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" style="display:inline-flex;align-items:center;text-decoration:none;">
+      <svg height="38" viewBox="0 0 340 78" role="img" style="display:block;">
+        <title>SJ Remote Solutions</title>
+        <style>.npf{font-family:'Playfair Display',Georgia,serif}</style>
+        <text x="26" y="62" class="npf" font-size="70" font-weight="700" fill="#2E2E2E" letter-spacing="-3" text-anchor="start">SJ</text>
+        <line x1="16" y1="70" x2="84" y2="70" stroke="#3DCFBF" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="96" y1="12" x2="96" y2="66" stroke="#EBEBEB" stroke-width="1"/>
+        <text x="108" y="37" class="npf" font-size="21" font-weight="700" fill="#2E2E2E" letter-spacing="3" text-anchor="start">REMOTE</text>
+        <text x="108" y="62" class="npf" font-size="21" font-weight="700" fill="#3DCFBF" letter-spacing="1.5" text-anchor="start">SOLUTIONS</text>
+      </svg>
+    </a>
+    <div class="nav-links">
+      <a href="/services">Services</a>
+      <a href="/#how-it-works">How it works</a>
+      <a href="/risk-check">Free Check</a>
+      <a href="/insights" style="color:#2E2E2E;font-weight:500;">Insights</a>
+      <a href="/booking" class="btn-nav">Book a call</a>
+    </div>
+  </div>
+</nav>
+
+<!-- INSIGHTS HERO -->
+<section style="background:var(--charcoal);padding:4rem 2rem 3rem;">
+  <div class="section-inner">
+    <p class="section-label" style="color:var(--teal);">Insights</p>
+    <div class="teal-rule"></div>
+    <h1 style="font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,2.8rem);font-weight:600;color:#fff;margin-bottom:0.75rem;line-height:1.2;">AI compliance intelligence<br>for UK recruitment</h1>
+    <p style="color:#9B9B9B;font-size:1rem;max-width:560px;font-weight:300;">The latest developments in AI compliance, UK data law and responsible hiring — curated for recruitment professionals.</p>
+  </div>
+</section>
+
+<!-- CONTENT -->
+<section style="background:#fff;padding:3rem 2rem 5rem;">
+  <div class="section-inner" style="max-width:820px;">
+
+    <!-- TAG STYLES inline so they work standalone -->
+    <style>
+      .itag{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;padding:0.2rem 0.6rem;border-radius:20px;display:inline-block}
+      .tag-ico{background:#E8F7F6;color:#157A72}
+      .tag-uk{background:#E8EEF7;color:#1A3F8F}
+      .tag-eu{background:#F0EBF7;color:#5A2D91}
+      .tag-sector{background:#FFF0E8;color:#A04010}
+      .tag-data{background:#F0F7E8;color:#3A6B10}
+      .tag-business{background:#FFF8E8;color:#8A6000}
+      .tag-new{background:#34C7B9;color:#fff}
+      .idivider{display:flex;align-items:center;gap:1rem;margin:2.5rem 0 1.25rem}
+      .idivider h2{font-family:'Playfair Display',serif;font-size:1rem;color:#9B9B9B;white-space:nowrap;font-style:italic;font-weight:400}
+      .idivider::after{content:'';flex:1;height:1px;background:#EBEBEB}
+      .ilist{display:flex;flex-direction:column}
+      .iitem{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;padding:1.35rem 0;border-bottom:1px solid #F0F0F0;text-decoration:none;color:inherit;border-radius:6px;transition:all .15s}
+      .iitem:hover{background:#F4FFFE;padding-left:0.75rem;padding-right:0.75rem;margin:0 -0.75rem}
+      .iitem:last-child{border-bottom:none}
+      .imeta{display:flex;flex-wrap:wrap;align-items:center;gap:0.4rem;margin-bottom:0.5rem}
+      .idate{font-size:0.75rem;color:#9B9B9B}
+      .iitem h3{font-size:0.975rem;font-weight:600;color:#2E2E2E;margin-bottom:0.35rem;line-height:1.45}
+      .iitem p{font-size:0.875rem;color:#6B6B6B;line-height:1.6;font-weight:300}
+      .iarrow{font-size:1.1rem;color:#34C7B9;flex-shrink:0;margin-top:4px;transition:transform .15s}
+      .iitem:hover .iarrow{transform:translateX(4px)}
+    </style>
+
+
+    <!-- JUNE 2026 -->
+    <div class="idivider"><h2>June 2026</h2></div>
+    <div class="ilist">
+
+      <a class="iitem" href="https://www.oleeo.com/blog/6-ways-your-recruitment-processes-are-breaking-the-law-2/" target="_blank" rel="noopener">
+        <div><div class="imeta"><span class="itag tag-new">New</span><span class="itag tag-ico">ICO</span><span class="itag tag-sector">Recruitment</span><span class="idate">25 Jun 2026</span></div>
+        <h3>6 ways your recruitment processes are breaking the law</h3>
+        <p>The ICO investigated 37 employers on their use of automated decision-making in recruitment and sent specific compliance recommendations to 16 of them. Oleeo's breakdown of the most common failures is a direct checklist of what the regulator is looking for — and what most agencies are currently missing. Source: Oleeo / ICO.</p></div>
+        <span class="iarrow">→</span>
+      </a>
+
+      <a class="iitem" href="https://www.technologyslegaledge.com/2026/06/ai-in-recruitment-the-icos-wake-up-call-for-vendors/" target="_blank" rel="noopener">
+        <div><div class="imeta"><span class="itag tag-new">New</span><span class="itag tag-ico">ICO</span><span class="itag tag-sector">Recruitment</span><span class="idate">26 Jun 2026</span></div>
+        <h3>AI in recruitment: the ICO's wake-up call for vendors</h3>
+        <p>Technology's Legal Edge analyses the ICO's escalating scrutiny of AI hiring tools — from CV screening to video interview analysis. The piece is clear: the regulator is no longer just publishing guidance. It is writing to employers and vendors directly. Source: Technology's Legal Edge.</p></div>
+        <span class="iarrow">→</span>
+      </a>
+
+      <a class="iitem" href="https://brodies.com/insights/ip-technology-and-data/new-rules-come-into-force-on-data-protection-complaints/" target="_blank" rel="noopener">
+        <div><div class="imeta"><span class="itag tag-new">New</span><span class="itag tag-uk">UK law</span><span class="itag tag-data">Data law</span><span class="idate">19 Jun 2026</span></div>
+        <h3>New rules come into force on data protection complaints</h3>
+        <p>The Data (Use and Access) Act 2025 formal complaints process came into force on 19 June 2026. Brodies LLP confirms the ICO has published new guidance alongside the new rules. Every organisation that processes personal data — including recruitment agencies using AI screening tools — must now have a compliant complaints procedure in place. Source: Brodies LLP.</p></div>
+        <span class="iarrow">→</span>
+      </a>
+
+      <a class="iitem" href="https://bratby.law/automated-decision-making-uk-gdpr-duaa-2025/" target="_blank" rel="noopener">
+        <div><div class="imeta"><span class="itag tag-ico">ICO</span><span class="itag tag-uk">UK GDPR</span><span class="itag tag-data">DUAA 2025</span><span class="idate">19 Jun 2026</span></div>
+        <h3>Automated Decision-Making: UK GDPR and DUAA 2025</h3>
+        <p>Bratby Law's practical guide to how the Data (Use and Access) Act 2025 changes the automated decision-making framework. The DUAA gives the Secretary of State power to require the ICO to produce a statutory code of practice on AI and ADM — which, once published, will be binding in enforcement proceedings. Source: Bratby Law.</p></div>
+        <span class="iarrow">→</span>
+      </a>
+
+      <a class="iitem" href="https://www.freeths.co.uk/legal-articles/2026/ico-consults-on-updated-automated-decision-making-guidance/" target="_blank" rel="noopener">
+        <div><div class="imeta"><span class="itag tag-ico">ICO</span><span class="itag tag-uk">UK GDPR</span><span class="idate">9 Jun 2026</span></div>
+        <h3>ICO consults on updated automated decision-making and profiling guidance</h3>
+        <p>Freeths analysis of the ICO's updated ADM guidance published for consultation on 31 March 2026 — covering when automated decision-making is permitted, the restrictions that apply, and the safeguards required. The consultation closed 29 May 2026; final guidance is expected later in 2026 and will carry significant weight in enforcement. Source: Freeths.</p></div>
+        <span class="iarrow">→</span>
+      </a>
+
+      <a class="iitem" href="https://measuredcollective.com/ico-ai-code-of-practice-what-uk-organisations-should-do-before-the-next-strategy-lands/" target="_blank" rel="noopener">
+        <div><div class="imeta"><span class="itag tag-ico">ICO</span><span class="itag tag-data">Data law</span><span class="idate">1 Jun 2026</span></div>
+        <h3>ICO AI code of practice: what UK organisations should do now</h3>
+        <p>The ICO confirmed on 29 May 2026 that its next AI workstream will include a statutory code of practice on automated decision-making and agentic AI guidance. Measured Collective sets out what organisations should be reviewing and documenting now — before the code lands and compliance becomes a baseline expectation. Source: Measured Collective.</p></div>
+        <span class="iarrow">→</span>
+      </a>
+
+    </div>
+
+    <!-- MAY 2026 -->
+    <div class="idivider"><h2>May 2026</h2></div>
+    <div class="ilist">
+
+      <a class="iitem" href="https://www.techtimes.com/articles/316668/20260515/ico-tells-uk-employers-ai-hiring-tools-without-genuine-human-review-may-violate-data-law.htm" target="_blank" rel="noopener">
+        <div><div class="imeta"><span class="itag tag-ico">ICO</span><span class="itag tag-sector">Recruitment</span><span class="idate">May 2026</span></div>
+        <h3>ICO tells UK employers: AI hiring tools without genuine human review may violate data law</h3>
+        <p>The ICO warns UK employers that AI tools used to screen CVs, rank candidates and analyse video interviews may already be breaking data protection law if a human is not meaningfully involved in every consequential decision. The regulator has written directly to 16 named organisations. Source: TechTimes.</p></div>
+        <span class="iarrow">→</span>
+      </a>
+
+      <a class="iitem" href="https://www.personneltoday.com/hr/automated-decisions-in-recruitment-ico-report-consultation/" target="_blank" rel="noopener">
+        <div><div class="imeta"><span class="itag tag-ico">ICO</span><span class="itag tag-uk">UK GDPR</span><span class="idate">May 2026</span></div>
+        <h3>ICO calls on recruiters to review use of automated decisions</h3>
+        <p>Personnel Today covers the ICO's formal call for organisations to audit their AI recruitment processes. A practical summary of what the regulator expects and what HR and recruitment teams need to do now. Source: Personnel Today.</p></div>
+        <span class="iarrow">→</span>
+      </a>
+
+      <a class="iitem" href="https://www.burges-salmon.com/articles/102mruj/automated-decision-making-ico-consults-on-new-guidance-following-duaa-reforms/" target="_blank" rel="noopener">
+        <div><div class="imeta"><span class="itag tag-ico">ICO</span><span class="itag tag-uk">UK GDPR</span><span class="idate">May 2026</span></div>
+        <h3>ICO consults on new automated decision-making guidance following DUAA reforms</h3>
+        <p>Legal analysis of the ICO's updated ADM guidance following changes introduced by the Data (Use and Access) Act 2025 — covering what has changed, what the new framework requires, and why it matters for every organisation using AI in hiring. Source: Burges Salmon.</p></div>
+        <span class="iarrow">→</span>
+      </a>
+
+      <a class="iitem" href="https://themodernregulator.com/icos-new-ai-rulebook-for-automated-decisions/" target="_blank" rel="noopener">
+        <div><div class="imeta"><span class="itag tag-ico">ICO</span><span class="itag tag-data">Data law</span><span class="idate">May 2026</span></div>
+        <h3>The ICO will write the UK's rulebook on AI decisions — and its reach will extend far beyond the UK</h3>
+        <p>A new statutory instrument formally commissions the ICO to prepare a code of practice on AI and automated decision-making. Once finalised, courts and the regulator must take it into account in any enforcement or legal proceeding. Source: The Modern Regulator.</p></div>
+        <span class="iarrow">→</span>
+      </a>
+
+    </div>
+
+    <!-- APRIL 2026 -->
+    <div class="idivider"><h2>April 2026</h2></div>
+    <div class="ilist">
+
+      <a class="iitem" href="https://bmmagazine.co.uk/in-business/uk-businesses-falling-behind-ai-adoption-pwc-study/" target="_blank" rel="noopener">
+        <div><div class="imeta"><span class="itag tag-business">Business</span><span class="idate">April 2026</span></div>
+        <h3>UK firms risk being left behind as AI adoption gap widens, warns PwC</h3>
+        <p>A PwC study finds UK businesses invest just 2% of revenue in AI versus 5% globally — and only 27% have redesigned their workflows to integrate it properly. In recruitment, that gap creates legal risk as well as commercial cost. Source: Business Matters / PwC.</p></div>
+        <span class="iarrow">→</span>
+      </a>
+
+      <a class="iitem" href="https://www.farrer.co.uk/news-and-insights/ai-in-the-workplace-2026-uk-what-employers-need-to-know-about-the-business-and-trade-committee-inquiry/" target="_blank" rel="noopener">
+        <div><div class="imeta"><span class="itag tag-sector">Recruitment &amp; HR</span><span class="itag tag-uk">UK law</span><span class="idate">April 2026</span></div>
+        <h3>AI in the workplace 2026: the Business and Trade Committee inquiry</h3>
+        <p>The House of Commons Business and Trade Committee launched a formal inquiry into AI and the future of the UK workforce — examining bias, transparency, accountability and whether current protections are sufficient. Parliamentary scrutiny of AI in hiring is intensifying. Source: Farrer &amp; Co.</p></div>
+        <span class="iarrow">→</span>
+      </a>
+
+      <a class="iitem" href="https://www.ropesgray.com/en/insights/viewpoints/102mpug/helping-hand-or-complete-control-ai-in-recruitment-in-the-eu-and-uk" target="_blank" rel="noopener">
+        <div><div class="imeta"><span class="itag tag-eu">EU AI Act</span><span class="itag tag-sector">Recruitment</span><span class="idate">April 2026</span></div>
+        <h3>Helping hand or complete control? AI in recruitment in the EU and UK</h3>
+        <p>A detailed legal analysis of where the line falls between AI as decision support and AI as the decision-maker — and why getting it wrong exposes organisations to enforcement under both UK GDPR and the EU AI Act's high-risk classification for recruitment tools. Source: Ropes &amp; Gray.</p></div>
+        <span class="iarrow">→</span>
+      </a>
+
+    </div>
+
+    <!-- MARCH 2026 -->
+    <div class="idivider"><h2>March 2026</h2></div>
+    <div class="ilist">
+
+      <a class="iitem" href="https://ico.org.uk/about-the-ico/media-centre/news-and-blogs/2026/03/automated-decisions-can-streamline-the-hiring-process-with-the-right-safeguards-in-place/" target="_blank" rel="noopener">
+        <div><div class="imeta"><span class="itag tag-ico">ICO</span><span class="itag tag-sector">Recruitment</span><span class="idate">March 2026</span></div>
+        <h3>Automated decisions can streamline the hiring process — with the right safeguards in place</h3>
+        <p>The ICO's own statement on AI in recruitment. Acknowledges efficiency benefits but is clear that transparency, meaningful human oversight, bias monitoring and data subject rights are non-negotiable. The starting point for any compliance review. Source: ICO.</p></div>
+        <span class="iarrow">→</span>
+      </a>
+
+      <a class="iitem" href="https://www.fisherphillips.com/en/insights/insights/what-us-employers-need-to-know-about-ai-hiring-bias-laws-in-the-eu-and-uk" target="_blank" rel="noopener">
+        <div><div class="imeta"><span class="itag tag-eu">EU AI Act</span><span class="itag tag-data">Data law</span><span class="idate">March 2026</span></div>
+        <h3>AI hiring bias laws in the EU and UK — what employers need to know</h3>
+        <p>A practical guide to the legal exposure UK employers face when using AI in recruitment — covering UK GDPR automated decision-making rules, Equality Act 2010 indirect discrimination risk, DPIA requirements, and what meaningful human oversight looks like in practice. Source: Fisher Phillips.</p></div>
+        <span class="iarrow">→</span>
+      </a>
+
+    </div>
+
+    <!-- FEBRUARY 2026 -->
+    <div class="idivider"><h2>February 2026</h2></div>
+    <div class="ilist">
+
+      <a class="iitem" href="https://www.reworked.co/talent-management/is-ai-baking-in-discrimination-in-recruitment/" target="_blank" rel="noopener">
+        <div><div class="imeta"><span class="itag tag-sector">Recruitment</span><span class="itag tag-data">Discrimination</span><span class="idate">February 2026</span></div>
+        <h3>Is AI baking in discrimination in recruitment?</h3>
+        <p>Video interview tools may misinterpret accents or facial expressions, disadvantaging candidates from certain backgrounds. AI systems trained on historically biased data reproduce those patterns at scale — and under the Equality Act 2010, employers remain liable even when the decision was made by software. Source: Reworked.</p></div>
+        <span class="iarrow">→</span>
+      </a>
+
+      <a class="iitem" href="https://www.davidsonmorris.com/ai-recruitment/" target="_blank" rel="noopener">
+        <div><div class="imeta"><span class="itag tag-sector">Recruitment</span><span class="itag tag-uk">UK law</span><span class="idate">2026</span></div>
+        <h3>AI recruitment in 2026: GDPR and discrimination risks</h3>
+        <p>A clear, practical guide to the legal exposure UK employers face when using AI in recruitment — covering UK GDPR automated decision-making rules, Equality Act 2010 indirect discrimination risk, DPIA requirements, and what meaningful human oversight looks like in practice. Source: Davidson Morris.</p></div>
+        <span class="iarrow">→</span>
+      </a>
+
+    </div>
+
+    <!-- CTA -->
+    <div style="margin-top:3rem;background:var(--charcoal);border-radius:16px;padding:2rem 2.25rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;">
+      <div>
+        <p style="font-size:0.7rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal);margin-bottom:0.5rem;">Not sure what this means for you?</p>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:500;color:#fff;margin-bottom:0.5rem;">We help recruitment agencies navigate AI compliance — without the jargon.</h3>
+        <p style="font-size:0.875rem;color:#9B9B9B;font-weight:300;">A free 30-minute discovery call. No pressure, no pitch.</p>
+      </div>
+      <a href="/booking" class="btn-teal" style="white-space:nowrap;flex-shrink:0;">Book a free call →</a>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="/" class="nav-logo" style="margin-bottom:0.75rem;display:inline-flex;">
+        <div class="nav-logo-mark">SJ</div>
+        <span>SJ Remote Solutions</span>
+      </a>
+      <p>An independent AI governance and compliance consultancy. Helping UK recruitment agencies use AI with fairness, transparency, accountability, and operational compliance.</p>
+      <a href="mailto:stephanie@sjremotesolutions.co.uk" style="font-size:0.85rem;color:var(--teal);">stephanie@sjremotesolutions.co.uk</a>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="/services">Essentials Scan</a></li>
+        <li><a href="/services">Full AI Hiring Audit</a></li>
+        <li><a href="/services">Governance Workshop</a></li>
+        <li><a href="/services">Compliance Retainer</a></li>
+        <li><a href="/booking">Book a call</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="/privacy">Privacy Policy</a></li>
+        <li><a href="/terms">Terms of Service</a></li>
+        <li><a href="/cookies">Cookie Policy</a></li>
+        <li><a href="https://www.linkedin.com/in/stephanie-jones-8027b340b" target="_blank">LinkedIn</a></li>
+        <li><a href="/risk-check" style="color:var(--teal);">Free compliance checker</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 SJ Remote Solutions. Registered in England & Wales.</p>
+    <span class="insured-badge">Professionally insured</span>
+  </div>
+</footer>
+
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submit-btn');
+    const success = document.getElementById('form-success');
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.style.display = 'none';
+      success.style.display = 'block';
+    }, 800);
+  }
+</script>
+
+</body>
+</html>
+
+</html>

@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Hiring Compliance Risk Calculator — SJ Remote Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal:#34C7B9; --teal-dk:#1F8C81; --blush:#F7E0E3; --charcoal:#2E2E33;
+    --ink:#3a3a40; --muted:#7c7c85; --line:#e6e9e9;
+    --green:#3FA796; --amber:#E0A43B; --red:#D2674E;
+    --bg1:#F4F6F6; --bg2:#ECF0F0;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'DM Sans',system-ui,-apple-system,sans-serif;
+    color:var(--ink); line-height:1.5;
+    background:linear-gradient(160deg,var(--bg1),var(--bg2));
+    min-height:100vh; padding:0;
+  }
+  .wrap{max-width:720px;margin:0 auto;padding:28px 16px 60px}
+  /* site nav (matches homepage) */
+  nav.site{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid #EBEBEB;padding:1.1rem 2rem}
+  nav.site .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+  nav.site .nav-links{display:flex;align-items:center;gap:2rem}
+  nav.site .nav-links a{font-size:0.875rem;color:#9B9B9B;font-weight:400;text-decoration:none;transition:color .15s}
+  nav.site .nav-links a:hover{color:#2E2E2E}
+  nav.site .nav-links a.active{color:#2E2E2E;font-weight:500}
+  nav.site .btn-nav{background:#2E2E2E;color:#fff;font-size:0.875rem;font-weight:500;padding:0.6rem 1.25rem;border-radius:8px;transition:background .15s;letter-spacing:0.02em}
+  nav.site .btn-nav:hover{background:#4A4A4A}
+  @media(max-width:560px){nav.site{padding:0.9rem 1rem}nav.site .nav-links{gap:1.1rem}}
+  .logo{font-family:'Playfair Display',Georgia,serif;font-size:15px;letter-spacing:.5px;margin-bottom:22px;text-align:center}
+  .logo b{color:var(--teal-dk);font-weight:700}
+  .logo span{color:var(--charcoal);font-weight:500;letter-spacing:2px;font-size:11px}
+  h1{font-family:'Playfair Display',Georgia,serif;font-weight:600;font-size:30px;color:var(--charcoal);line-height:1.15;text-align:center;margin-bottom:8px}
+  .sub{text-align:center;color:var(--muted);font-size:14.5px;max-width:520px;margin:0 auto 26px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px 24px;box-shadow:0 6px 28px rgba(46,46,51,.05);margin-bottom:20px}
+  /* trust band */
+  .trust{background:#fff;border:1px solid var(--line);border-left:4px solid var(--teal);border-radius:16px;padding:20px 22px;margin-bottom:20px;box-shadow:0 6px 28px rgba(46,46,51,.05)}
+  .trust .tt{font-family:'Playfair Display',Georgia,serif;font-weight:600;font-size:16px;color:var(--charcoal);margin-bottom:8px}
+  .trust p{font-size:13px;color:var(--ink);line-height:1.55;margin-bottom:12px}
+  .trust p:last-child{margin-bottom:0}
+  .pills{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:12px}
+  .pills span{font-size:11.5px;font-weight:600;color:var(--teal-dk);background:#e6f4f1;border:1px solid #cdeae5;border-radius:20px;padding:5px 11px;white-space:nowrap}
+  .trust .ev{font-size:12px;color:var(--muted);line-height:1.55}
+  .trust .ev b{color:var(--ink)}
+  .card h2{font-family:'Playfair Display',Georgia,serif;font-weight:600;font-size:17px;color:var(--charcoal);margin-bottom:18px;display:flex;align-items:center;gap:9px}
+  .card h2 i{display:inline-block;width:7px;height:18px;background:var(--teal);border-radius:3px}
+  .field{margin-bottom:20px}
+  .field:last-child{margin-bottom:0}
+  label{display:block;font-size:13.5px;font-weight:600;color:var(--charcoal);margin-bottom:9px}
+  .hint{font-weight:400;color:var(--muted);font-size:12px}
+  input[type=range]{width:100%;accent-color:var(--teal);height:5px}
+  .rangerow{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px}
+  .rangeval{font-family:'Playfair Display',serif;font-size:20px;color:var(--teal-dk);font-weight:700}
+  .seg{display:flex;flex-wrap:wrap;gap:7px}
+  .seg button, .toggle button{
+    font-family:inherit;font-size:12.5px;font-weight:500;cursor:pointer;
+    border:1.5px solid var(--line);background:#fff;color:var(--ink);
+    padding:9px 13px;border-radius:10px;transition:all .15s;flex:1;min-width:fit-content
+  }
+  .seg button.on{background:var(--charcoal);color:#fff;border-color:var(--charcoal)}
+  .toggle{display:flex;gap:8px}
+  .toggle button{flex:1}
+  .toggle button.yes.on{background:var(--teal);border-color:var(--teal);color:#fff}
+  .toggle button.no.on{background:var(--red);border-color:var(--red);color:#fff}
+  /* results */
+  .band{display:flex;align-items:center;gap:16px;padding:18px 20px;border-radius:14px;margin-bottom:8px;transition:background .3s}
+  .band .dot{width:46px;height:46px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;color:#fff;font-size:19px}
+  .band .lbl{font-family:'Playfair Display',serif;font-size:21px;font-weight:600}
+  .band .desc{font-size:13px;color:var(--ink);margin-top:2px}
+  .bandRed{background:#fbeae5}.bandRed .dot{background:var(--red)}.bandRed .lbl{color:var(--red)}
+  .bandAmber{background:#fbf2e1}.bandAmber .dot{background:var(--amber)}.bandAmber .lbl{color:#b9842a}
+  .bandGreen{background:#e6f4f1}.bandGreen .dot{background:var(--green)}.bandGreen .lbl{color:var(--teal-dk)}
+  .teaserline{text-align:center;font-size:13px;color:var(--muted);margin:0 4px 4px}
+  /* gated breakdown */
+  .gatewrap{position:relative;margin-top:14px}
+  .gated{filter:blur(7px);opacity:.55;pointer-events:none;user-select:none;transition:filter .4s,opacity .4s}
+  .gatewrap.open .gated{filter:none;opacity:1;pointer-events:auto;user-select:auto}
+  .gate{
+    position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:24px 20px;z-index:2;
+  }
+  .gatewrap.open .gate{display:none}
+  .gate .glock{font-size:22px;margin-bottom:8px}
+  .gate h3{font-family:'Playfair Display',serif;font-weight:600;font-size:19px;color:var(--charcoal);margin-bottom:6px;line-height:1.25}
+  .gate p{font-size:13px;color:var(--ink);max-width:380px;margin:0 auto 16px}
+  .gateform{display:flex;gap:8px;width:100%;max-width:420px;flex-wrap:wrap;justify-content:center}
+  .gateform input[type=email]{
+    flex:1;min-width:200px;font-family:inherit;font-size:14px;color:var(--ink);
+    border:1.5px solid var(--line);border-radius:11px;padding:12px 14px;background:#fff;
+  }
+  .gateform input[type=email]:focus{outline:none;border-color:var(--teal)}
+  .gateform button{
+    font-family:inherit;font-weight:600;font-size:14px;cursor:pointer;color:#fff;background:var(--teal);
+    border:none;border-radius:11px;padding:12px 20px;transition:background .2s,transform .12s;
+  }
+  .gateform button:hover{background:var(--teal-dk);transform:translateY(-1px)}
+  .gateerr{color:var(--red);font-size:12.5px;margin-top:9px;min-height:16px;font-weight:500}
+  .gatenote{font-size:11px;color:var(--muted);margin-top:12px;max-width:380px}
+  .exrow{margin-bottom:16px}
+  .exrow .top{display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px}
+  .exrow .top b{color:var(--charcoal)}
+  .exrow .top span{font-weight:600;color:var(--teal-dk);font-family:'DM Sans'}
+  .track{height:9px;background:var(--bg2);border-radius:6px;overflow:hidden}
+  .bar{height:100%;border-radius:6px;background:linear-gradient(90deg,var(--teal),var(--teal-dk));width:0;transition:width .5s ease}
+  .total{text-align:center;padding:22px 16px;border-top:1px dashed var(--line);margin-top:8px}
+  .total .cap{font-size:12.5px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+  .total .big{font-family:'Playfair Display',serif;font-size:34px;font-weight:700;color:var(--charcoal);line-height:1.1}
+  .total .big small{font-size:18px;color:var(--muted);font-weight:500}
+  .versus{background:var(--charcoal);color:#fff;border-radius:14px;padding:22px;text-align:center;margin-top:20px}
+  .versus .v1{font-size:13.5px;opacity:.85}
+  .versus .v2{font-family:'Playfair Display',serif;font-size:19px;font-weight:600;margin:8px 0;line-height:1.35}
+  .versus .v2 em{color:var(--teal);font-style:normal}
+  .cta{display:inline-block;margin-top:6px;background:var(--teal);color:#fff;font-weight:600;font-size:14.5px;text-decoration:none;padding:13px 26px;border-radius:11px;transition:transform .12s,background .2s}
+  .cta:hover{background:var(--teal-dk);transform:translateY(-1px)}
+  details.method{margin-top:18px;border-top:1px solid var(--line);padding-top:14px}
+  details.method summary{cursor:pointer;font-size:12.5px;font-weight:600;color:var(--teal-dk);list-style:none}
+  details.method summary::-webkit-details-marker{display:none}
+  details.method summary::before{content:"▸ ";color:var(--teal)}
+  details.method[open] summary::before{content:"▾ "}
+  details.method .mbody{font-size:12px;color:var(--muted);line-height:1.6;margin-top:10px}
+  details.method .mbody b{color:var(--ink)}
+  .disc{font-size:11.5px;color:var(--muted);text-align:center;margin-top:18px;line-height:1.5;max-width:560px;margin-left:auto;margin-right:auto}
+  @media(max-width:520px){h1{font-size:25px}.total .big{font-size:28px}}
+</style>
+</head>
+<body>
+<nav class="site">
+  <div class="nav-inner">
+    <a href="/" style="display:inline-flex;align-items:center;text-decoration:none;">
+      <svg height="38" viewBox="0 0 340 78" role="img" style="display:block;">
+        <title>SJ Remote Solutions</title>
+        <style>.npf{font-family:'Playfair Display',Georgia,serif}</style>
+        <text x="26" y="62" class="npf" font-size="70" font-weight="700" fill="#2E2E2E" letter-spacing="-3" text-anchor="start">SJ</text>
+        <line x1="16" y1="70" x2="84" y2="70" stroke="#3DCFBF" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="96" y1="12" x2="96" y2="66" stroke="#EBEBEB" stroke-width="1"/>
+        <text x="108" y="37" class="npf" font-size="21" font-weight="700" fill="#2E2E2E" letter-spacing="3" text-anchor="start">REMOTE</text>
+        <text x="108" y="62" class="npf" font-size="21" font-weight="700" fill="#3DCFBF" letter-spacing="1.5" text-anchor="start">SOLUTIONS</text>
+      </svg>
+    </a>
+    <div class="nav-links">
+      <a href="/services">Services</a>
+      <a href="/#how-it-works">How it works</a>
+      <a href="/risk-check" class="active">Free Check</a>
+      <a href="/#insights">Insights</a>
+      <a href="/booking" class="btn-nav">Book a call</a>
+    </div>
+  </div>
+</nav>
+<div class="wrap">
+  <div class="logo"><b>SJ</b> &nbsp;<span>REMOTE&nbsp;SOLUTIONS</span></div>
+  <h1>What is your AI hiring compliance risk worth?</h1>
+  <p class="sub">A 60-second indication of your agency's exposure under ICO automated-decision rules, UK GDPR Article&nbsp;22 and the Data (Use and Access) Act&nbsp;2025.</p>
+
+  <div class="trust">
+    <div class="tt">Grounded in law and the public record — not guesswork</div>
+    <p>This is an indicative check, but it's built on the legislation that actually governs AI in hiring and cross-referenced with live ICO enforcement. We don't invent statistics: every figure is driven by your own inputs, and every case behind it is one you can look up yourself.</p>
+    <div class="pills">
+      <span>UK GDPR Art. 22</span>
+      <span>Art. 35 — DPIA</span>
+      <span>Art. 15 — SAR</span>
+      <span>Data (Use and Access) Act 2025</span>
+      <span>ICO enforcement register</span>
+    </div>
+    <p class="ev">Recent ICO action includes a <b>£14.47m fine (Feb 2026)</b> partly for failing to carry out a Data Protection Impact Assessment, and a <b>UK school reprimanded</b> for deploying facial recognition without one — the same Article&nbsp;35 duty that applies to AI candidate screening. Full sources are shown with your results.</p>
+  </div>
+
+  <div class="card">
+    <h2><i></i>Your agency</h2>
+
+    <div class="field">
+      <div class="rangerow"><label style="margin:0">Candidates processed per year</label><span class="rangeval" id="vCand">5,000</span></div>
+      <input type="range" id="cand" min="500" max="50000" step="500" value="5000">
+    </div>
+
+    <div class="field">
+      <label>How much of your hiring runs through AI / automated tools? <span class="hint">(CV screening, ranking, advert targeting, scheduling)</span></label>
+      <div class="seg" id="ai">
+        <button data-v="0">None / manual</button>
+        <button data-v="0.30">Light touch</button>
+        <button data-v="0.60" class="on">Moderate</button>
+        <button data-v="0.85">Comprehensive</button>
+        <button data-v="1.00">Fully automated</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="rangerow"><label style="margin:0">Key client / PSL contracts you can't afford to lose</label><span class="rangeval" id="vCon">3</span></div>
+      <input type="range" id="con" min="0" max="20" step="1" value="3">
+    </div>
+
+    <div class="field">
+      <div class="rangerow"><label style="margin:0">Average annual value of one such contract</label><span class="rangeval" id="vVal">£40k</span></div>
+      <input type="range" id="val" min="5000" max="250000" step="5000" value="40000">
+    </div>
+  </div>
+
+  <div class="card">
+    <h2><i></i>Your safeguards</h2>
+    <div class="field">
+      <label>Formal data-protection complaints process in place? <span class="hint">(required since DUAA, 19 June 2026)</span></label>
+      <div class="toggle" data-key="complaints"><button class="yes">Yes</button><button class="no on">No</button></div>
+    </div>
+    <div class="field">
+      <label>Privacy notice that specifically covers AI / automated decisions?</label>
+      <div class="toggle" data-key="notice"><button class="yes">Yes</button><button class="no on">No</button></div>
+    </div>
+    <div class="field">
+      <label>Meaningful human oversight before any automated hiring decision?</label>
+      <div class="toggle" data-key="oversight"><button class="yes on">Yes</button><button class="no">No</button></div>
+    </div>
+  </div>
+
+  <div class="card" id="results">
+    <h2><i></i>Your indicative exposure</h2>
+
+    <!-- TEASER: always visible, updates live -->
+    <div class="band bandAmber" id="band">
+      <div class="dot" id="bandDot">A</div>
+      <div><div class="lbl" id="bandLbl">Amber risk</div><div class="desc" id="bandDesc">Some safeguards missing — addressable, but live.</div></div>
+    </div>
+    <p class="teaserline" id="teaserLine">Adjust the sliders above to see your risk band move in real time.</p>
+
+    <!-- GATED: the actual figures, unlocked by email -->
+    <div class="gatewrap" id="gatewrap">
+      <div class="gate" id="gate">
+        <div class="glock">🔒</div>
+        <h3 id="gateHead">See your estimated exposure figure</h3>
+        <p>Enter your email to unlock your full breakdown and have a copy of your indicative report sent over.</p>
+        <div class="gateform">
+          <input type="email" id="gateEmail" placeholder="you@youragency.co.uk" autocomplete="email" />
+          <button id="gateBtn" type="button">Reveal my figure →</button>
+        </div>
+        <div class="gateerr" id="gateErr"></div>
+        <div class="gatenote">We'll only use this to send your report and, occasionally, relevant compliance updates. No spam, unsubscribe anytime.</div>
+      </div>
+
+      <div class="gated" id="breakdown" aria-hidden="true">
+        <div class="exrow"><div class="top"><b>Regulatory &amp; remediation</b><span id="exReg">£0</span></div><div class="track"><div class="bar" id="barReg"></div></div></div>
+        <div class="exrow"><div class="top"><b>Client &amp; PSL loss risk</b><span id="exCli">£0</span></div><div class="track"><div class="bar" id="barCli"></div></div></div>
+        <div class="exrow"><div class="top"><b>Complaint &amp; SAR handling</b><span id="exOps">£0</span></div><div class="track"><div class="bar" id="barOps"></div></div></div>
+
+        <div class="total">
+          <div class="cap">Estimated annual exposure</div>
+          <div class="big" id="totalRange">£0 <small>–</small> £0</div>
+        </div>
+
+        <div class="versus">
+          <div class="v1">The cost of finding out where you stand:</div>
+          <div class="v2"><em id="vsScan">£995</em> Essentials Scan&nbsp;&nbsp;·&nbsp;&nbsp;from <em>£850/mo</em> to stay covered</div>
+          <a class="cta" href="/booking">Book your Essentials Scan →</a>
+        </div>
+
+        <details class="method">
+          <summary>How this is calculated — and the evidence behind it</summary>
+          <div class="mbody">
+            <p>This is an <b>illustrative model driven entirely by the figures you enter</b> — not a regulatory assessment, and it invents no statistics. Every case named below is real and sits on the <b>ICO's public enforcement register</b>. The model rests on the law that already applies to UK recruitment agencies using automated tools:</p>
+
+            <p><b>Regulatory &amp; remediation.</b> <b>Article 35 UK GDPR</b> requires a Data Protection Impact Assessment <em>before</em> high-risk processing — and automated screening of candidate data at volume is very likely to qualify. The ICO is enforcing this <em>now</em>: <b>Reddit was fined £14,472,500 in February 2026</b> partly for an Article 35 failure, alongside <b>MediaLab (£247,590)</b> the same month. And in July 2024, a UK school was reprimanded under Article 35(1) for introducing facial-recognition cashless catering <em>without</em> a DPIA — if a school's dinner-hall scanner is in scope, so is AI screening across thousands of candidates. This figure estimates the cost of doing reactively, under pressure, what should have been done up front: a defined block of specialist remediation work plus a DPIA, scaled by your AI use and missing safeguards. The ICO's maximum penalty is <b>£17.5m or 4% of turnover</b>.</p>
+
+            <p><b>Client &amp; PSL loss risk.</b> Large employers increasingly run data-protection due diligence on suppliers — DPAs and audit clauses written into PSL frameworks. This estimates the expected value of losing <em>one</em> key contract if a client's audit surfaced an unaddressed gap: contract value × an estimated probability, capped at 30% so the model never overstates.</p>
+
+            <p><b>Complaint &amp; SAR handling.</b> Under <b>Article 15 UK GDPR</b>, any rejected candidate can request all data held about them — including an AI-generated score or ranking — within a statutory <b>one-month</b> deadline; <b>Article 22</b> gives them the right to contest a solely-automated decision and obtain human review. The ICO pursues subject-access failures relentlessly — multiple recent enforcement actions across police forces, councils and NHS trusts, <b>including the personal prosecution of a company director</b> for refusing one. Since the <b>Data (Use and Access) Act 2025</b> complaints process came into force on <b>19 June 2026</b>, a formal handling route is also mandatory. This figure estimates the staff time that volume consumes when no process exists.</p>
+
+            <p style="color:var(--ink)"><b>We'd rather show our working than impress you with numbers we can't stand behind.</b> Every coefficient above is a stated assumption you can see and challenge — and every case is one you can look up.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <p class="disc">This is an indicative, illustrative estimate generated from the figures you enter — not legal or financial advice, and not a regulatory assessment. Actual exposure depends on your specific processing, contracts and circumstances. SJ Remote Solutions can give you a precise picture. © SJ Remote Solutions.</p>
+  </div>
+</div>
+
+<script>
+/* ────────────────────────────────────────────────────────────────────────
+   TUNABLE ASSUMPTIONS — change these to your real numbers.
+   Every figure the calculator shows is built from the constants below, so you
+   can defend each one in the room. Nothing here is a fine or a published stat.
+   ──────────────────────────────────────────────────────────────────────── */
+const CONFIG = {
+  // Regulatory & remediation — cost of fixing things reactively, at FULL AI use
+  // with ALL safeguards missing. Default ≈ 5 specialist days + a DPIA.
+  // Set this to: (your day-rate × days) + DPIA cost.
+  REMEDIATION_BASE: 9000,      // £
+
+  // Client / PSL loss — probability ONE key client audits you and walks.
+  LOSS_BASE:    0.04,          // baseline annual probability
+  LOSS_PER_GAP: 0.045,         // added probability per missing safeguard (0–3)
+  LOSS_PER_CONTRACT: 0.06,     // more contracts = more audit surface (modest)
+  LOSS_CAP:     0.30,          // hard ceiling — never imply >30% (anti-scaremonger)
+
+  // Complaint & SAR handling — staff time, no process in place.
+  SAR_RATE:   0.002,           // share of processed candidates who submit a SAR (0.2%)
+  SAR_HOURS:  6,               // hours to handle one SAR without a process
+  STAFF_RATE: 38,              // £/hour blended staff cost
+
+  // Lead capture. Pick a mode and fill the matching field(s) below.
+  //   'off'       — unlocks but stores nothing (demo only)
+  //   'formspree' — quickest: paste your Formspree form URL into LEAD.formspreeUrl
+  //   'supabase'  — store straight into your existing Supabase table
+  LEAD: {
+    mode: 'supabase',
+    formspreeUrl: '',                 // e.g. 'https://formspree.io/f/abcdwxyz'
+    supabaseUrl: 'https://gxegzpzewhmeszivukqd.supabase.co',
+    supabaseAnonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd4ZWd6cHpld2htZXN6aXZ1a3FkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIzMTM2NTUsImV4cCI6MjA5Nzg4OTY1NX0.wvtT3oopVJAvQyBsm3wP-ZdwQHGSua9xoAVY9qo4p_8',
+    supabaseTable: 'risk_leads',
+  },
+
+  ESSENTIALS_PRICE: '£995',
+  RETAINER_PRICE:   '£850/mo',
+};
+
+const state={cand:5000,ai:0.60,con:3,val:40000,complaints:false,notice:false,oversight:true};
+let unlocked=false;
+const gbp=n=>'£'+Math.round(n).toLocaleString('en-GB');
+const gbpK=n=> n>=1000 ? '£'+Math.round(n/1000)+'k' : '£'+n;
+
+function model(){
+  const ai=state.ai;                                  // 0 – 1
+  const gaps=(!state.complaints?1:0)+(!state.notice?1:0)+(!state.oversight?1:0); // 0–3
+  const gapFactor=1+gaps*0.5;                          // 1.0 – 2.5
+
+  // Regulatory & remediation — zero if no AI in use
+  const reg=ai*gapFactor*CONFIG.REMEDIATION_BASE;
+
+  // Client / PSL loss — expected value of losing ONE key contract
+  const pLoss=Math.min(CONFIG.LOSS_CAP,
+      (CONFIG.LOSS_BASE+CONFIG.LOSS_PER_GAP*gaps)*ai*(1+CONFIG.LOSS_PER_CONTRACT*state.con));
+  const cli=state.val*pLoss;
+
+  // Complaint & SAR handling — partly AI-driven, but SAR rights exist regardless
+  const sars=state.cand*CONFIG.SAR_RATE;
+  const ops=sars*CONFIG.SAR_HOURS*CONFIG.STAFF_RATE*(0.3+0.7*ai)*gapFactor;
+
+  const point=reg+cli+ops;
+  const score=Math.min(100, ai*58+gaps*14);
+  return {reg,cli,ops,point,score,gaps,ai};
+}
+
+function render(){
+  const m=model();
+
+  // risk band (teaser — always visible)
+  const band=document.getElementById('band');
+  band.className='band '+(m.score>=70?'bandRed':m.score>=40?'bandAmber':'bandGreen');
+  const dot=document.getElementById('bandDot'), lbl=document.getElementById('bandLbl'), desc=document.getElementById('bandDesc');
+  if(m.score>=70){dot.textContent='R';lbl.textContent='Red risk';desc.textContent='Significant exposure with key safeguards absent. Priority action advised.';}
+  else if(m.score>=40){dot.textContent='A';lbl.textContent='Amber risk';desc.textContent='Some safeguards missing — addressable, but live exposure today.';}
+  else {dot.textContent='G';lbl.textContent='Green risk';desc.textContent='Lower-risk profile. Worth confirming and documenting to stay there.';}
+
+  // figures (gated)
+  const mx=Math.max(m.reg,m.cli,m.ops,1);
+  document.getElementById('exReg').textContent=gbp(m.reg);
+  document.getElementById('exCli').textContent=gbp(m.cli);
+  document.getElementById('exOps').textContent=gbp(m.ops);
+  document.getElementById('barReg').style.width=(m.reg/mx*100)+'%';
+  document.getElementById('barCli').style.width=(m.cli/mx*100)+'%';
+  document.getElementById('barOps').style.width=(m.ops/mx*100)+'%';
+  document.getElementById('totalRange').innerHTML=gbp(m.point*0.7)+' <small>–</small> '+gbp(m.point*1.3);
+  document.getElementById('vsScan').textContent=CONFIG.ESSENTIALS_PRICE;
+
+  // teaser line nudges toward unlock
+  const t=document.getElementById('teaserLine');
+  if(!unlocked){
+    t.textContent = m.score>=70 ? 'Your profile is in the red — unlock the figures below to see what it could be costing you.'
+                  : m.score>=40 ? 'You have live exposure — unlock the figures below to see the estimate.'
+                  : 'Lower-risk profile — unlock the figures below to confirm where you stand.';
+  } else {
+    t.style.display='none';
+  }
+}
+
+/* ── inputs ─────────────────────────────────────────────────────────────── */
+const ranges=[['cand','vCand',v=>Number(v).toLocaleString('en-GB')],
+              ['con','vCon',v=>v],
+              ['val','vVal',v=>gbpK(Number(v))]];
+ranges.forEach(([id,disp,fmt])=>{
+  const el=document.getElementById(id);
+  el.addEventListener('input',()=>{state[id]=Number(el.value);document.getElementById(disp).textContent=fmt(el.value);render();});
+});
+document.querySelectorAll('#ai button').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('#ai button').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on'); state.ai=Number(b.dataset.v); render();
+}));
+document.querySelectorAll('.toggle').forEach(t=>{
+  const key=t.dataset.key;
+  t.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{
+    t.querySelectorAll('button').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on'); state[key]=b.classList.contains('yes'); render();
+  }));
+});
+
+/* ── email gate ─────────────────────────────────────────────────────────── */
+const EMAIL_RE=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+function unlock(){
+  unlocked=true;
+  document.getElementById('gatewrap').classList.add('open');
+  document.getElementById('breakdown').setAttribute('aria-hidden','false');
+  render();
+}
+async function submitLead(){
+  const input=document.getElementById('gateEmail');
+  const err=document.getElementById('gateErr');
+  const btn=document.getElementById('gateBtn');
+  const email=(input.value||'').trim();
+  if(!EMAIL_RE.test(email)){ err.textContent='Please enter a valid email address.'; return; }
+  err.textContent='';
+
+  const m=model();
+  const lead={
+    email,
+    source:'risk-calculator',
+    ts:new Date().toISOString(),
+    candidates:state.cand, ai_usage:state.ai, contracts:state.con, contract_value:state.val,
+    complaints:state.complaints, notice:state.notice, oversight:state.oversight,
+    exposure_low:Math.round(m.point*0.7), exposure_high:Math.round(m.point*1.3),
+    band:m.score>=70?'Red':m.score>=40?'Amber':'Green'
+  };
+
+  // capture, then unlock regardless so a network blip never blocks the user
+  btn.disabled=true; btn.textContent='Sending…';
+  try{
+    const L=CONFIG.LEAD;
+    if(L.mode==='formspree' && L.formspreeUrl){
+      await fetch(L.formspreeUrl,{
+        method:'POST',
+        headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body:JSON.stringify(lead)
+      });
+    } else if(L.mode==='supabase' && L.supabaseUrl && L.supabaseAnonKey){
+      await fetch(L.supabaseUrl.replace(/\/$/,'')+'/rest/v1/'+L.supabaseTable,{
+        method:'POST',
+        headers:{
+          'Content-Type':'application/json',
+          'apikey':L.supabaseAnonKey,
+          'Authorization':'Bearer '+L.supabaseAnonKey,
+          'Prefer':'return=minimal'
+        },
+        body:JSON.stringify(lead)
+      });
+    } else {
+      console.warn('Lead capture is OFF (demo). Captured:',lead);
+    }
+  }catch(e){ console.warn('Lead capture failed (unlocking anyway):',e); }
+  btn.disabled=false; btn.textContent='Reveal my figure →';
+  unlock();
+}
+document.getElementById('gateBtn').addEventListener('click',submitLead);
+document.getElementById('gateEmail').addEventListener('keydown',e=>{ if(e.key==='Enter') submitLead(); });
+
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services — SJ Remote Solutions</title>
+  <meta name="description" content="Independent AI governance and compliance advisory for UK recruitment agencies. ICO ADM, UK GDPR Article 22, and DUAA 2025 specialists." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal:        #3DCFBF;
+      --teal-light:  #EAF8F6;
+      --teal-dark:   #28A99A;
+      --charcoal:    #2E2E2E;
+      --charcoal-mid:#4A4A4A;
+      --grey:        #9B9B9B;
+      --grey-light:  #F2F2F2;
+      --border:      #EBEBEB;
+      --blush:       #FFB3BC;
+      --blush-light: #FFF0F2;
+      --surface:     #FAFAF9;
+      --white:       #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', 'Segoe UI', sans-serif;
+      background: linear-gradient(160deg, #F4F6F6 0%, #ECF0F0 50%, #E5EBEB 100%);
+      color: var(--charcoal);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', Georgia, serif;
+      line-height: 1.2;
+      color: var(--charcoal);
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: white;
+      border-bottom: 1px solid var(--border);
+      padding: 1.1rem 2rem;
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem; font-weight: 700;
+      color: var(--charcoal);
+      letter-spacing: 0.05em;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .nav-logo-mark {
+      width: 32px; height: 32px;
+      background: var(--charcoal);
+      border-radius: 7px;
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-size: 12px; font-weight: 700; letter-spacing: 0.05em;
+    }
+    .nav-links { display: flex; align-items: center; gap: 2rem; }
+    .nav-links a { font-size: 0.875rem; color: var(--grey); font-weight: 400; transition: color 0.15s; }
+    .nav-links a:hover { color: var(--charcoal); }
+    .btn-nav {
+      background: var(--charcoal); color: white;
+      font-size: 0.875rem; font-weight: 500;
+      padding: 0.6rem 1.25rem; border-radius: 8px;
+      transition: background 0.15s; letter-spacing: 0.02em;
+    }
+    .btn-nav:hover { background: var(--charcoal-mid); }
+
+    /* HERO */
+    .hero {
+      background: transparent;
+      padding: 6rem 2rem 5rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-inner { max-width: 860px; margin: 0 auto; }
+
+    .hero-logo-svg { max-width: 560px; margin: 0 auto 2.5rem; display: block; }
+
+    .hero h1 {
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      font-weight: 500;
+      color: var(--charcoal);
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+    .hero h1 em { color: var(--teal); font-style: italic; }
+    .hero p {
+      font-size: 1.1rem; color: #6B6B6B; font-weight: 300;
+      max-width: 600px; margin: 0 auto 2.5rem;
+    }
+    .hero-ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--charcoal); color: white;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem; font-weight: 500;
+      padding: 0.85rem 1.75rem; border-radius: 10px;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      transition: background 0.15s; letter-spacing: 0.02em; border: none; cursor: pointer;
+    }
+    .btn-primary:hover { background: var(--charcoal-mid); }
+    .btn-teal {
+      background: var(--teal); color: white;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem; font-weight: 500;
+      padding: 0.85rem 1.75rem; border-radius: 10px;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      transition: background 0.15s; letter-spacing: 0.02em; border: none; cursor: pointer;
+    }
+    .btn-teal:hover { background: var(--teal-dark); }
+    .btn-outline {
+      background: white; color: var(--charcoal);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem; font-weight: 500;
+      padding: 0.85rem 1.75rem; border-radius: 10px;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      transition: all 0.15s; letter-spacing: 0.02em;
+      border: 1.5px solid var(--border); cursor: pointer;
+    }
+    .btn-outline:hover { border-color: var(--charcoal); }
+
+    /* SECTION */
+    section { padding: 6rem 2rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.7rem; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--grey); margin-bottom: 1rem;
+    }
+    .section-title {
+      font-size: clamp(1.75rem, 3vw, 2.25rem);
+      font-weight: 500; margin-bottom: 1rem;
+    }
+    .teal-rule {
+      width: 2.5rem; height: 2px;
+      background: var(--teal); border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+
+    /* CHECKER CTA STRIP */
+    .checker-strip {
+      background: var(--teal-light);
+      border-top: 1px solid #B0E8E2;
+      border-bottom: 1px solid #B0E8E2;
+      padding: 2rem;
+    }
+    .checker-strip-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 2rem; flex-wrap: wrap;
+    }
+    .checker-strip h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; font-weight: 500;
+      color: var(--teal-dark); margin-bottom: 0.25rem;
+    }
+    .checker-strip p { font-size: 0.9rem; color: var(--teal-dark); opacity: 0.8; }
+
+    /* WHAT WE DO */
+    .what-bg { background: var(--surface); }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+    .tag {
+      font-size: 0.8rem; font-weight: 500;
+      padding: 0.35rem 0.875rem;
+      border-radius: 999px;
+      background: white; border: 1px solid var(--border);
+      color: var(--charcoal-mid);
+    }
+
+    /* PRINCIPLES */
+    .principles-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .principle-card {
+      background: white; border: 1px solid var(--border);
+      border-radius: 16px; padding: 1.75rem;
+    }
+    .principle-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: var(--teal-light);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.25rem; margin-bottom: 1rem;
+    }
+    .principle-card h3 { font-size: 1rem; font-weight: 500; margin-bottom: 0.5rem; }
+    .principle-card p { font-size: 0.875rem; color: #6B6B6B; font-weight: 300; line-height: 1.65; }
+
+    /* SERVICES */
+    .services-bg { background: white; }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .service-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 2rem; position: relative;
+    }
+    .service-card.featured {
+      border-color: var(--teal); border-width: 1.5px;
+      background: white;
+    }
+    .service-badge {
+      display: inline-block; font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      background: var(--teal); color: white;
+      padding: 0.2rem 0.6rem; border-radius: 4px;
+      margin-bottom: 1rem;
+    }
+    .service-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem; font-weight: 400;
+      color: var(--border); letter-spacing: -0.02em;
+      line-height: 1; margin-bottom: 0.75rem;
+    }
+    .service-card h3 { font-size: 1.2rem; font-weight: 500; margin-bottom: 0.75rem; }
+    .service-card > p { font-size: 0.9rem; color: #6B6B6B; font-weight: 300; margin-bottom: 1.25rem; }
+    .service-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .service-list li {
+      font-size: 0.875rem; color: var(--charcoal-mid);
+      display: flex; align-items: flex-start; gap: 0.5rem;
+    }
+    .service-list li::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--teal); flex-shrink: 0; margin-top: 0.55rem;
+    }
+
+    /* PRICING */
+    .price-tag {
+      margin-top: 1.5rem; padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem; font-weight: 500; color: var(--charcoal);
+    }
+    .price-tag span { font-family: 'DM Sans', sans-serif; font-size: 0.8rem; color: var(--grey); font-weight: 400; }
+
+    /* HOW IT WORKS */
+    .how-bg { background: var(--surface); }
+    .steps-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem; margin-top: 3rem;
+    }
+    .step { text-align: center; }
+    .step-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem; font-weight: 400;
+      color: var(--border); letter-spacing: -0.02em;
+      line-height: 1; margin-bottom: 0.5rem;
+    }
+    .step .teal-rule { margin: 0 auto 1rem; }
+    .step h3 { font-size: 1rem; font-weight: 500; margin-bottom: 0.5rem; }
+    .step p { font-size: 0.875rem; color: #6B6B6B; font-weight: 300; }
+
+    /* DISCLAIMER */
+    .disclaimer {
+      background: var(--grey-light); border-radius: 12px;
+      padding: 1.25rem 1.5rem; margin-top: 3rem;
+      display: flex; gap: 1rem; align-items: flex-start;
+    }
+    .disclaimer-icon { color: var(--grey); font-size: 1.1rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .disclaimer p { font-size: 0.85rem; color: #6B6B6B; font-weight: 300; line-height: 1.65; }
+
+    /* CONTACT */
+    .contact-bg { background: white; }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: start;
+    }
+    @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; gap: 3rem; } }
+    .contact-details { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+    .contact-item {
+      display: flex; align-items: center; gap: 0.75rem;
+      font-size: 0.9rem; color: #6B6B6B;
+    }
+    .contact-item-icon {
+      width: 36px; height: 36px; border-radius: 8px;
+      background: var(--teal-light); flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem;
+    }
+
+    /* FORM */
+    .form { display: flex; flex-direction: column; gap: 1rem; }
+    .form-label {
+      display: block; font-size: 0.7rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--grey); margin-bottom: 0.375rem;
+    }
+    .form-input, .form-select, .form-textarea {
+      width: 100%; padding: 0.75rem 1rem;
+      border: 1px solid var(--border); border-radius: 10px;
+      font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+      color: var(--charcoal); background: white; outline: none;
+      transition: border-color 0.15s;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--teal); }
+    .form-textarea { resize: vertical; min-height: 120px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 540px) { .form-row { grid-template-columns: 1fr; } }
+    .form-note { font-size: 0.75rem; color: var(--grey); font-weight: 300; margin-top: 0.5rem; }
+
+    /* CTA DARK */
+    .cta-dark { background: var(--charcoal); padding: 5rem 2rem; text-align: center; }
+    .cta-dark h2 { color: white; font-size: clamp(1.75rem, 3vw, 2.25rem); font-weight: 400; margin-bottom: 1rem; }
+    .cta-dark p { color: var(--grey); font-size: 0.95rem; font-weight: 300; margin-bottom: 2rem; }
+    .cta-dark .teal-rule { margin: 0 auto 1.5rem; }
+
+    /* FOOTER */
+    footer {
+      background: white; border-top: 1px solid var(--border);
+      padding: 3rem 2rem;
+    }
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+    }
+    @media (max-width: 768px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
+    .footer-brand p { font-size: 0.85rem; color: var(--grey); font-weight: 300; margin: 1rem 0; line-height: 1.65; }
+    .footer-col h4 {
+      font-family: 'DM Sans', sans-serif; font-size: 0.7rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--grey); margin-bottom: 1rem;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .footer-col ul li a { font-size: 0.875rem; color: var(--charcoal-mid); transition: color 0.15s; }
+    .footer-col ul li a:hover { color: var(--teal); }
+    .footer-bottom {
+      max-width: 1100px; margin: 2rem auto 0;
+      padding-top: 1.5rem; border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-bottom p { font-size: 0.8rem; color: var(--grey); }
+    .insured-badge {
+      font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--grey); background: var(--grey-light);
+      padding: 0.3rem 0.75rem; border-radius: 4px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      section { padding: 4rem 1.25rem; }
+      .hero { padding: 4rem 1.25rem 3rem; }
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" style="display:inline-flex;align-items:center;text-decoration:none;">
+      <svg height="38" viewBox="0 0 340 78" role="img" style="display:block;">
+        <title>SJ Remote Solutions</title>
+        <style>.npf{font-family:'Playfair Display',Georgia,serif}</style>
+        <text x="26" y="62" class="npf" font-size="70" font-weight="700" fill="#2E2E2E" letter-spacing="-3" text-anchor="start">SJ</text>
+        <line x1="16" y1="70" x2="84" y2="70" stroke="#3DCFBF" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="96" y1="12" x2="96" y2="66" stroke="#EBEBEB" stroke-width="1"/>
+        <text x="108" y="37" class="npf" font-size="21" font-weight="700" fill="#2E2E2E" letter-spacing="3" text-anchor="start">REMOTE</text>
+        <text x="108" y="62" class="npf" font-size="21" font-weight="700" fill="#3DCFBF" letter-spacing="1.5" text-anchor="start">SOLUTIONS</text>
+      </svg>
+    </a>
+    <div class="nav-links">
+      <a href="/services" style="color:#2E2E2E;font-weight:500;">Services</a>
+      <a href="/#how-it-works">How it works</a>
+      <a href="/risk-check">Free Check</a>
+      <a href="/#insights">Insights</a>
+      <a href="/booking" class="btn-nav">Book a call</a>
+    </div>
+  </div>
+</nav>
+
+<!-- SERVICES -->
+<section class="services-bg">
+  <div class="section-inner">
+    <p class="section-label">Services</p>
+    <div class="teal-rule"></div>
+    <h2 class="section-title">Three ways we can help</h2>
+    <p style="color:#6B6B6B;font-weight:300;max-width:520px;">Start with an audit to understand your position. Build from there with policies and ongoing support.</p>
+
+    <div class="services-grid">
+      <!-- Tier 1 -->
+      <div class="service-card">
+        <div class="service-num">01</div>
+        <h3>Essentials Scan</h3>
+        <p>A focused review of your AI hiring tools against the ICO ADM framework — with a written findings summary and priority actions.</p>
+        <ul class="service-list">
+          <li>AI tool and data flow mapping</li>
+          <li>ICO ADM gap assessment</li>
+          <li>Written findings summary</li>
+          <li>Top 3 priority actions</li>
+        </ul>
+        <div class="price-tag">£995 <span>one-off</span></div>
+      </div>
+
+      <!-- Tier 2 -->
+      <div class="service-card featured">
+        <div class="service-badge">Most popular</div>
+        <div class="service-num">02</div>
+        <h3>Full AI Hiring Audit</h3>
+        <p>A thorough review of your AI hiring process — covering ICO ADM, DUAA 2025, bias risk, and candidate transparency obligations.</p>
+        <ul class="service-list">
+          <li>Full AI tool and data flow mapping</li>
+          <li>ICO ADM & DUAA 2025 assessment</li>
+          <li>Bias and equality risk review</li>
+          <li>Written report with prioritised actions</li>
+          <li>30-minute debrief call included</li>
+        </ul>
+        <div class="price-tag">£3,500 <span>one-off</span></div>
+      </div>
+
+      <!-- Tier 3 -->
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <h3>Governance Workshop</h3>
+        <p>A half-day working session with your team to build an AI governance framework tailored to your agency's processes and tools.</p>
+        <ul class="service-list">
+          <li>Half-day facilitated session</li>
+          <li>AI use policy drafted live</li>
+          <li>Candidate transparency notices</li>
+          <li>Internal staff guidance document</li>
+        </ul>
+        <div class="price-tag">£1,500 <span>one-off</span></div>
+      </div>
+    </div>
+
+    <!-- Retainer -->
+    <div style="margin-top:1.5rem;background:var(--charcoal);border-radius:16px;padding:2rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;">
+      <div>
+        <p style="font-size:0.7rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal);margin-bottom:0.5rem;">Ongoing support</p>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:500;color:white;margin-bottom:0.5rem;">Compliance Retainer</h3>
+        <p style="font-size:0.875rem;color:var(--grey);font-weight:300;">Monthly advisory support as regulations evolve. Check-ins, regulatory updates, policy maintenance, and on-call guidance when you need it.</p>
+      </div>
+      <div style="text-align:right;flex-shrink:0;">
+        <div style="font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:500;color:white;margin-bottom:0.5rem;">£850<span style="font-family:'DM Sans',sans-serif;font-size:0.8rem;color:var(--grey);font-weight:400;">/month</span></div>
+        <a href="/booking" class="btn-teal" style="font-size:0.85rem;padding:0.65rem 1.25rem;">Enquire →</a>
+      </div>
+    </div>
+
+    <!-- Policy Pack note -->
+    <p style="font-size:0.85rem;color:var(--grey);margin-top:1.25rem;text-align:center;">Need just the paperwork? Ask about our <strong style="color:var(--charcoal-mid)">AI Policy Pack</strong> — a standalone documentation bundle from £650.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="/" class="nav-logo" style="margin-bottom:0.75rem;display:inline-flex;">
+        <div class="nav-logo-mark">SJ</div>
+        <span>SJ Remote Solutions</span>
+      </a>
+      <p>An independent AI governance and compliance consultancy. Helping UK recruitment agencies use AI with fairness, transparency, accountability, and operational compliance.</p>
+      <a href="mailto:stephanie@sjremotesolutions.co.uk" style="font-size:0.85rem;color:var(--teal);">stephanie@sjremotesolutions.co.uk</a>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="/services">Essentials Scan</a></li>
+        <li><a href="/services">Full AI Hiring Audit</a></li>
+        <li><a href="/services">Governance Workshop</a></li>
+        <li><a href="/services">Compliance Retainer</a></li>
+        <li><a href="/booking">Book a call</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="/privacy">Privacy Policy</a></li>
+        <li><a href="/terms">Terms of Service</a></li>
+        <li><a href="/cookies">Cookie Policy</a></li>
+        <li><a href="https://www.linkedin.com/in/stephanie-jones-8027b340b" target="_blank">LinkedIn</a></li>
+        <li><a href="/risk-check" style="color:var(--teal);">Free compliance checker</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 SJ Remote Solutions. Registered in England & Wales.</p>
+    <span class="insured-badge">Professionally insured</span>
+  </div>
+</footer>
+
+</body>
+</html>
