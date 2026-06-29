@@ -30,7 +30,12 @@
 
     body {
       font-family: 'Inter', 'Segoe UI', sans-serif;
-      background: linear-gradient(160deg, #F6F6F4 0%, #F0F0EC 50%, #E8E8E2 100%);
+      background:
+        linear-gradient(135deg, rgba(230,220,255,0.45) 0%, rgba(255,255,255,0) 40%),
+        linear-gradient(225deg, rgba(200,235,255,0.35) 0%, rgba(255,255,255,0) 40%),
+        linear-gradient(315deg, rgba(255,210,240,0.30) 0%, rgba(255,255,255,0) 40%),
+        linear-gradient(45deg,  rgba(210,245,240,0.25) 0%, rgba(255,255,255,0) 40%),
+        linear-gradient(160deg, #F8F6FC, #F3F0FA);
       color: var(--charcoal);
       font-size: 16px;
       line-height: 1.7;
@@ -387,12 +392,20 @@
 </nav>
 
 <!-- INSIGHTS HERO -->
-<section style="background:var(--charcoal);padding:4rem 2rem 3rem;">
+<section style="
+  background:
+    linear-gradient(135deg, rgba(230,220,255,0.55) 0%, rgba(255,255,255,0) 45%),
+    linear-gradient(225deg, rgba(200,235,255,0.40) 0%, rgba(255,255,255,0) 45%),
+    linear-gradient(315deg, rgba(255,210,240,0.35) 0%, rgba(255,255,255,0) 45%),
+    linear-gradient(45deg,  rgba(210,245,240,0.30) 0%, rgba(255,255,255,0) 45%),
+    linear-gradient(160deg, #F0ECF8, #E8E3F4);
+  padding:4rem 2rem 3rem;
+  border-bottom:1px solid rgba(111,92,156,0.15);">
   <div class="section-inner">
     <p class="section-label" style="color:var(--teal);">Insights</p>
     <div class="teal-rule"></div>
-    <h1 style="font-family:'Spectral',serif;font-size:clamp(2rem,4vw,2.8rem);font-weight:600;color:#fff;margin-bottom:0.75rem;line-height:1.2;">AI compliance intelligence<br>for UK recruitment</h1>
-    <p style="color:#9B9B9B;font-size:1rem;max-width:560px;font-weight:300;">The latest developments in AI compliance, UK data law and responsible hiring — curated for recruitment professionals.</p>
+    <h1 style="font-family:'Spectral',serif;font-size:clamp(2rem,4vw,2.8rem);font-weight:600;color:#2E2E2E;margin-bottom:0.75rem;line-height:1.2;">AI compliance intelligence<br>for UK recruitment</h1>
+    <p style="color:#6B6B6B;font-size:1rem;max-width:560px;font-weight:300;">The latest developments in AI compliance, UK data law and responsible hiring — curated for recruitment professionals.</p>
   </div>
 </section>
 

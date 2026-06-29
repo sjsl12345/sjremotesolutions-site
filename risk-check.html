@@ -12,13 +12,18 @@
     --teal:#6F5C9C; --teal-dk:#4E3F75; --blush:#EBE7E2; --charcoal:#2E2E33;
     --ink:#3a3a40; --muted:#7c7c85; --line:#e6e9e9;
     --green:#3FA796; --amber:#E0A43B; --red:#D2674E;
-    --bg1:#F6F6F4; --bg2:#F0F0EC;
+    --bg1:#F8F6FC; --bg2:#F3F0FA;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   body{
     font-family:'Inter',system-ui,-apple-system,sans-serif;
     color:var(--ink); line-height:1.5;
-    background:linear-gradient(160deg,var(--bg1),var(--bg2));
+    background:
+        linear-gradient(135deg, rgba(230,220,255,0.45) 0%, rgba(255,255,255,0) 40%),
+        linear-gradient(225deg, rgba(200,235,255,0.35) 0%, rgba(255,255,255,0) 40%),
+        linear-gradient(315deg, rgba(255,210,240,0.30) 0%, rgba(255,255,255,0) 40%),
+        linear-gradient(45deg,  rgba(210,245,240,0.25) 0%, rgba(255,255,255,0) 40%),
+        linear-gradient(160deg, var(--bg1), var(--bg2));
     min-height:100vh; padding:0;
   }
   .wrap{max-width:720px;margin:0 auto;padding:28px 16px 60px}
