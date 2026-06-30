@@ -1,0 +1,288 @@
+From a8cc951da118d374002e4b0057249035fbb60691 Mon Sep 17 00:00:00 2001
+From: Claude <claude@anthropic.com>
+Date: Tue, 30 Jun 2026 09:42:37 +0000
+Subject: [PATCH] Fix all internal booking links to use explicit .html
+ extension
+
+All 24 occurrences of href="/booking" across the site changed to href="/booking.html" to avoid relying on Cloudflare Pages clean-URL rewriting
+---
+ booking.html      |  2 +-
+ cookies.html      |  4 ++--
+ how-it-works.html | 10 +++++-----
+ index.html        |  6 +++---
+ insights.html     |  6 +++---
+ privacy.html      |  4 ++--
+ risk-check.html   |  4 ++--
+ services.html     |  6 +++---
+ terms.html        |  4 ++--
+ thank-you.html    |  4 ++--
+ 10 files changed, 25 insertions(+), 25 deletions(-)
+
+diff --git a/booking.html b/booking.html
+index a1c9713..4f12802 100644
+--- a/booking.html
++++ b/booking.html
+@@ -70,7 +70,7 @@
+       <a href="/">Home</a>
+       <a href="/how-it-works">How it works</a>
+       <a href="/risk-check">Free check</a>
+-      <a href="/booking" style="color:#2E2E2E;font-weight:500;">Book a call</a>
++      <a href="/booking.html" style="color:#2E2E2E;font-weight:500;">Book a call</a>
+     </div>
+   </div>
+ </nav>
+diff --git a/cookies.html b/cookies.html
+index a0719fc..37a154d 100644
+--- a/cookies.html
++++ b/cookies.html
+@@ -386,7 +386,7 @@
+       <a href="/">Home</a>
+       <a href="/how-it-works">How it works</a>
+       <a href="/risk-check">Free check</a>
+-      <a href="/booking">Book a call</a>
++      <a href="/booking.html">Book a call</a>
+     </div>
+   </div>
+ </nav>
+@@ -488,7 +488,7 @@
+         <li><a href="/how-it-works">Full AI Hiring Audit</a></li>
+         <li><a href="/how-it-works">Governance Workshop</a></li>
+         <li><a href="/how-it-works">Compliance Retainer</a></li>
+-        <li><a href="/booking">Book a call</a></li>
++        <li><a href="/booking.html">Book a call</a></li>
+       </ul>
+     </div>
+     <div class="footer-col">
+diff --git a/how-it-works.html b/how-it-works.html
+index 1005517..e6f65c5 100644
+--- a/how-it-works.html
++++ b/how-it-works.html
+@@ -293,7 +293,7 @@
+       <a href="/">Home</a>
+       <a href="/how-it-works" class="active">How it works</a>
+       <a href="/risk-check">Free check</a>
+-      <a href="/booking">Book a call</a>
++      <a href="/booking.html">Book a call</a>
+     </div>
+   </div>
+ </nav>
+@@ -306,7 +306,7 @@
+     <h1>From first call to <em>compliance confidence</em></h1>
+     <p>A clear, proportionate path from first conversation to a report you can act on — designed to fit how a busy recruitment agency actually works.</p>
+     <div class="hero-ctas">
+-      <a href="/booking" class="btn btn-dark">Book a discovery call →</a>
++      <a href="/booking.html" class="btn btn-dark">Book a discovery call →</a>
+       <a href="/risk-check" class="btn btn-outline">Try the free check →</a>
+     </div>
+   </div>
+@@ -444,7 +444,7 @@
+           <li>On-call guidance as needed</li>
+         </ul>
+         <div class="price-tag" style="border-top-color:rgba(111,92,156,0.2);">£850 <span>/month</span></div>
+-        <a href="/booking" class="btn btn-lav" style="margin-top:1.25rem;font-size:0.85rem;padding:0.65rem 1.25rem;justify-content:center;">Enquire →</a>
++        <a href="/booking.html" class="btn btn-lav" style="margin-top:1.25rem;font-size:0.85rem;padding:0.65rem 1.25rem;justify-content:center;">Enquire →</a>
+       </div>
+     </div>
+ 
+@@ -459,7 +459,7 @@
+     <p>Start with our free compliance checker. 8 questions. 3 minutes. Instant Red / Amber / Green rating.</p>
+     <div class="ctas">
+       <a href="/risk-check" class="btn btn-dark">Try the free compliance checker →</a>
+-      <a href="/booking" class="btn btn-outline">Book a discovery call →</a>
++      <a href="/booking.html" class="btn btn-outline">Book a discovery call →</a>
+     </div>
+   </div>
+ </div>
+@@ -478,7 +478,7 @@
+         <li><a href="/how-it-works">Full AI Hiring Audit</a></li>
+         <li><a href="/how-it-works">Governance Workshop</a></li>
+         <li><a href="/how-it-works">Compliance Retainer</a></li>
+-        <li><a href="/booking">Book a call</a></li>
++        <li><a href="/booking.html">Book a call</a></li>
+       </ul>
+     </div>
+     <div class="footer-col">
+diff --git a/index.html b/index.html
+index c18055a..0136734 100644
+--- a/index.html
++++ b/index.html
+@@ -377,7 +377,7 @@
+       <a href="/">Home</a>
+       <a href="/how-it-works">How it works</a>
+       <a href="/risk-check">Free check</a>
+-      <a href="/booking">Book a call</a>
++      <a href="/booking.html">Book a call</a>
+     </div>
+   </div>
+ </nav>
+@@ -396,7 +396,7 @@
+     </ul>
+     <p class="hero-note">Delivered by an AI consultant with a cross-disciplinary background in law, AI governance (AIGP), and cybersecurity.</p>
+     <div class="hero-ctas">
+-      <a href="/booking" class="btn btn-dark">Book a discovery call →</a>
++      <a href="/booking.html" class="btn btn-dark">Book a discovery call →</a>
+       <a href="/risk-check" class="btn btn-light">Check your AI hiring risk →</a>
+     </div>
+   </div>
+@@ -479,7 +479,7 @@
+         <li><a href="/how-it-works">Full AI Hiring Audit</a></li>
+         <li><a href="/how-it-works">Governance Workshop</a></li>
+         <li><a href="/how-it-works">Compliance Retainer</a></li>
+-        <li><a href="/booking">Book a call</a></li>
++        <li><a href="/booking.html">Book a call</a></li>
+       </ul>
+     </div>
+ 
+diff --git a/insights.html b/insights.html
+index 23868a1..28725ee 100644
+--- a/insights.html
++++ b/insights.html
+@@ -386,7 +386,7 @@
+       <a href="/">Home</a>
+       <a href="/how-it-works">How it works</a>
+       <a href="/risk-check">Free check</a>
+-      <a href="/booking">Book a call</a>
++      <a href="/booking.html">Book a call</a>
+     </div>
+   </div>
+ </nav>
+@@ -595,7 +595,7 @@
+         <h3 style="font-family:'Spectral',serif;font-size:1.2rem;font-weight:500;color:#fff;margin-bottom:0.5rem;">We help recruitment agencies navigate AI compliance — without the jargon.</h3>
+         <p style="font-size:0.875rem;color:#9B9B9B;font-weight:300;">A free 30-minute discovery call. No pressure, no pitch.</p>
+       </div>
+-      <a href="/booking" class="btn-teal" style="white-space:nowrap;flex-shrink:0;">Book a free call →</a>
++      <a href="/booking.html" class="btn-teal" style="white-space:nowrap;flex-shrink:0;">Book a free call →</a>
+     </div>
+ 
+   </div>
+@@ -618,7 +618,7 @@
+         <li><a href="/how-it-works">Full AI Hiring Audit</a></li>
+         <li><a href="/how-it-works">Governance Workshop</a></li>
+         <li><a href="/how-it-works">Compliance Retainer</a></li>
+-        <li><a href="/booking">Book a call</a></li>
++        <li><a href="/booking.html">Book a call</a></li>
+       </ul>
+     </div>
+     <div class="footer-col">
+diff --git a/privacy.html b/privacy.html
+index 4fc9629..1daeeda 100644
+--- a/privacy.html
++++ b/privacy.html
+@@ -386,7 +386,7 @@
+       <a href="/">Home</a>
+       <a href="/how-it-works">How it works</a>
+       <a href="/risk-check">Free check</a>
+-      <a href="/booking">Book a call</a>
++      <a href="/booking.html">Book a call</a>
+     </div>
+   </div>
+ </nav>
+@@ -494,7 +494,7 @@
+         <li><a href="/how-it-works">Full AI Hiring Audit</a></li>
+         <li><a href="/how-it-works">Governance Workshop</a></li>
+         <li><a href="/how-it-works">Compliance Retainer</a></li>
+-        <li><a href="/booking">Book a call</a></li>
++        <li><a href="/booking.html">Book a call</a></li>
+       </ul>
+     </div>
+     <div class="footer-col">
+diff --git a/risk-check.html b/risk-check.html
+index db78604..1a9a776 100644
+--- a/risk-check.html
++++ b/risk-check.html
+@@ -153,7 +153,7 @@
+       <a href="/">Home</a>
+       <a href="/how-it-works">How it works</a>
+       <a href="/risk-check" style="color:#2E2E2E;font-weight:500;">Free check</a>
+-      <a href="/booking">Book a call</a>
++      <a href="/booking.html">Book a call</a>
+     </div>
+   </div>
+ </nav>
+@@ -258,7 +258,7 @@
+         <div class="versus">
+           <div class="v1">The cost of finding out where you stand:</div>
+           <div class="v2"><em id="vsScan">£995</em> Essentials Scan&nbsp;&nbsp;·&nbsp;&nbsp;from <em>£850/mo</em> to stay covered</div>
+-          <a class="cta" href="/booking">Book your Essentials Scan →</a>
++          <a class="cta" href="/booking.html">Book your Essentials Scan →</a>
+         </div>
+ 
+         <details class="method">
+diff --git a/services.html b/services.html
+index 14955c5..15a5265 100644
+--- a/services.html
++++ b/services.html
+@@ -386,7 +386,7 @@
+       <a href="/">Home</a>
+       <a href="/how-it-works">How it works</a>
+       <a href="/risk-check">Free check</a>
+-      <a href="/booking">Book a call</a>
++      <a href="/booking.html">Book a call</a>
+     </div>
+   </div>
+ </nav>
+@@ -454,7 +454,7 @@
+       </div>
+       <div style="text-align:right;flex-shrink:0;">
+         <div style="font-family:'Spectral',serif;font-size:1.75rem;font-weight:500;color:white;margin-bottom:0.5rem;">£850<span style="font-family:'Inter',sans-serif;font-size:0.8rem;color:var(--grey);font-weight:400;">/month</span></div>
+-        <a href="/booking" class="btn-teal" style="font-size:0.85rem;padding:0.65rem 1.25rem;">Enquire →</a>
++        <a href="/booking.html" class="btn-teal" style="font-size:0.85rem;padding:0.65rem 1.25rem;">Enquire →</a>
+       </div>
+     </div>
+ 
+@@ -480,7 +480,7 @@
+         <li><a href="/how-it-works">Full AI Hiring Audit</a></li>
+         <li><a href="/how-it-works">Governance Workshop</a></li>
+         <li><a href="/how-it-works">Compliance Retainer</a></li>
+-        <li><a href="/booking">Book a call</a></li>
++        <li><a href="/booking.html">Book a call</a></li>
+       </ul>
+     </div>
+     <div class="footer-col">
+diff --git a/terms.html b/terms.html
+index 83febc5..f809ab3 100644
+--- a/terms.html
++++ b/terms.html
+@@ -386,7 +386,7 @@
+       <a href="/">Home</a>
+       <a href="/how-it-works">How it works</a>
+       <a href="/risk-check">Free check</a>
+-      <a href="/booking">Book a call</a>
++      <a href="/booking.html">Book a call</a>
+     </div>
+   </div>
+ </nav>
+@@ -474,7 +474,7 @@
+         <li><a href="/how-it-works">Full AI Hiring Audit</a></li>
+         <li><a href="/how-it-works">Governance Workshop</a></li>
+         <li><a href="/how-it-works">Compliance Retainer</a></li>
+-        <li><a href="/booking">Book a call</a></li>
++        <li><a href="/booking.html">Book a call</a></li>
+       </ul>
+     </div>
+     <div class="footer-col">
+diff --git a/thank-you.html b/thank-you.html
+index ecbcada..7b1f684 100644
+--- a/thank-you.html
++++ b/thank-you.html
+@@ -386,7 +386,7 @@
+       <a href="/">Home</a>
+       <a href="/how-it-works">How it works</a>
+       <a href="/risk-check">Free check</a>
+-      <a href="/booking">Book a call</a>
++      <a href="/booking.html">Book a call</a>
+     </div>
+   </div>
+ </nav>
+@@ -448,7 +448,7 @@
+         <li><a href="/how-it-works">Full AI Hiring Audit</a></li>
+         <li><a href="/how-it-works">Governance Workshop</a></li>
+         <li><a href="/how-it-works">Compliance Retainer</a></li>
+-        <li><a href="/booking">Book a call</a></li>
++        <li><a href="/booking.html">Book a call</a></li>
+       </ul>
+     </div>
+     <div class="footer-col">
+-- 
+2.43.0
+
