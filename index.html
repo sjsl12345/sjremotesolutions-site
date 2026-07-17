@@ -231,7 +231,7 @@
 
 <script>
 const SUPABASE_URL  = 'https://gxegzpzewhmeszivukqd.supabase.co';
-const SUPABASE_ANON = 'Ysb_secret_Nw49v1fSWPKPOCIxRCqyag_uQl2Q0ps';
+const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd4ZWd6cHpld2htZXN6aXZ1a3FkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIzMTM2NTUsImV4cCI6MjA5Nzg4OTY1NX0.wvtT3oopVJAvQyBsm3wP-ZdwQHGSua9xoAVY9qo4p_8';
 
 async function submitWaitlist() {
   const email  = document.getElementById('wl-email').value.trim();
@@ -248,7 +248,7 @@ async function submitWaitlist() {
   btn.textContent = 'Submitting…';
 
   try {
-    await fetch(`${SUPABASE_URL}/rest/v1/waitlist`, {
+    await fetch(`${SUPABASE_URL}/rest/v1/risk_leads`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -256,7 +256,7 @@ async function submitWaitlist() {
         'Authorization': `Bearer ${SUPABASE_ANON}`,
         'Prefer': 'return=minimal'
       },
-      body: JSON.stringify({ email, agency_name: agency || null, source: 'homepage' })
+      body: JSON.stringify({ email, name: agency || null, source: 'homepage', ts: new Date().toISOString() })
     });
   } catch(e) { /* silent fail — still show success */ }
 
