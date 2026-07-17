@@ -467,9 +467,8 @@
       <div style="margin-top:.3rem"><a href="mailto:stephanie@sjremotesolutions.co.uk" style="color:#9B8AC4;text-decoration:none">stephanie@sjremotesolutions.co.uk</a></div>
     </div>
     <div class="footer-links">
-      <a href="/how-it-works">Essentials Scan</a>
-      <a href="/how-it-works">AI Hiring DPIA</a>
-      <a href="/how-it-works">Governance Workshop</a>
+      <a href="/how-it-works">How it works</a>
+      <a href="/how-it-works">Policy Pack</a>
       <a href="/booking.html">Book a call</a>
       <a href="/privacy">Privacy policy</a>
     </div>
@@ -482,8 +481,8 @@
    SUPABASE CONFIG — fill these in before deploying
    ──────────────────────────────────────────────────────────── */
 const SUPABASE_URL  = 'https://gxegzpzewhmeszivukqd.supabase.co';
-const SUPABASE_ANON = 'Ysb_secret_Nw49v1fSWPKPOCIxRCqyag_uQl2Q0ps';
-const SUPABASE_TABLE = 'risk_calculator_leads'; // change if your table is named differently
+const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd4ZWd6cHpld2htZXN6aXZ1a3FkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIzMTM2NTUsImV4cCI6MjA5Nzg4OTY1NX0.wvtT3oopVJAvQyBsm3wP-ZdwQHGSua9xoAVY9qo4p_8';
+const SUPABASE_TABLE = 'risk_leads'; // the real table
 
 /* ─────────────────────────────────────────────────────────────
    QUESTIONS
@@ -595,20 +594,20 @@ const RESULTS = {
     title: 'Your responses suggest a relatively well-governed position.',
     body: 'Based on what you have shared, your current AI use in recruitment appears to have the key protections in place. The regulatory environment is evolving — the ICO\'s focus on AI in hiring is intensifying, and the DUAA 2025 introduced new obligations that came into force in June 2026. Staying current matters.',
     cta1: 'Book a free discovery call', cta1href: '/booking.html',
-    cta2: 'Learn about our Compliance Retainer', cta2href: '/how-it-works'
+    cta2: 'See how the platform works', cta2href: '/how-it-works'
   },
   amber: {
     cls: 'amber', badge: 'Amber risk',
     title: 'Your responses suggest material compliance gaps.',
     body: 'These are areas the ICO expects organisations to have addressed. Regulatory scrutiny of AI in hiring is active and accelerating — the ICO published its Recruitment Rewired report in March 2026 and enforcement actions have followed. The gaps identified below are addressable, but they carry live regulatory risk in the meantime.',
-    cta1: 'Get your Essentials Scan — £995', cta1href: '/booking.html',
+    cta1: 'Book a free discovery call', cta1href: '/booking.html',
     cta2: 'Book a free discovery call first', cta2href: '/booking.html'
   },
   red: {
     cls: 'red', badge: 'Red risk',
     title: 'Your responses suggest significant compliance risk.',
     body: 'The ICO is actively enforcing in this space. The gaps flagged below include areas that have led to enforcement action against other organisations. Several may require urgent attention — particularly any sole automated decision-making without safeguards, and the DUAA complaints process which became a legal requirement in June 2026.',
-    cta1: 'Book your AI Hiring DPIA — £3,500', cta1href: '/booking.html',
+    cta1: 'Book a free discovery call — urgent', cta1href: '/booking.html',
     cta2: 'Book a free discovery call first', cta2href: '/booking.html'
   }
 };
@@ -630,9 +629,9 @@ async function saveLead(riskLevel) {
       body: JSON.stringify({
         name: S.name,
         email: S.email,
-        risk_level: riskLevel,
+        band: riskLevel,
         answers: S.answers,
-        created_at: new Date().toISOString(),
+        ts: new Date().toISOString(),
         source: 'risk-calculator'
       })
     });
