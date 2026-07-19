@@ -2,12 +2,154 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="refresh" content="0;url=/" />
-  <title>SJ Remote Solutions</title>
-  <link rel="canonical" href="/" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services — SJ Remote Solutions</title>
+  <meta name="description" content="AI governance and compliance advisory for UK recruitment agencies. ICO ADM, UK GDPR Articles 22A–22D, and DUAA 2025 specialists." />
+  <link rel="canonical" href="/services" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --teal:        #6F5C9C;
+      --teal-light:  #EDF1EF;
+      --teal-dark:   #4E3F75;
+      --charcoal:    #2E2E2E;
+      --charcoal-mid:#4A4A4A;
+      --grey:        #9B9B9B;
+      --grey-light:  #F2F2F2;
+      --border:      #EBEBEB;
+      --blush:       #C7B2AC;
+      --blush-light: #EFE6ED;
+      --surface:     #FAFAF9;
+      --white:       #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', 'Segoe UI', sans-serif;
+      background: #F9F7FC;
+      color: var(--charcoal);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Spectral', Georgia, serif;
+      line-height: 1.2;
+      color: var(--charcoal);
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: white;
+      border-bottom: 1px solid var(--border);
+      padding: 1.1rem 2rem;
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-links { display: flex; align-items: center; gap: 2rem; }
+    .nav-links a { font-size: 0.875rem; color: var(--grey); font-weight: 400; transition: color 0.15s; }
+    .nav-links a:hover { color: var(--charcoal); }
+
+    section { padding: 6rem 2rem; }
+    .section-inner { max-width: 720px; margin: 0 auto; }
+    .teal-rule {
+      width: 2.5rem; height: 2px;
+      background: var(--teal); border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+    .section-label {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--teal); margin-bottom: 0.75rem;
+    }
+    .early-access-note {
+      background: var(--blush-light);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      font-size: 0.9rem;
+      color: var(--charcoal-mid);
+      margin: 2rem 0;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--teal); color: #fff;
+      padding: 0.85rem 1.75rem; border-radius: 8px;
+      font-size: 0.95rem; font-weight: 600;
+      transition: opacity 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.85; }
+
+    footer { background: #fff; border-top: 1px solid var(--border); padding: 3rem 2rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr; gap: 3rem; }
+    .footer-col h4 { font-size: 0.75rem; letter-spacing: .12em; text-transform: uppercase; color: var(--grey); margin-bottom: 1rem; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .footer-col a { font-size: 0.9rem; color: var(--charcoal-mid); transition: opacity .2s; }
+    .footer-col a:hover { opacity: .6; }
+    .footer-bottom { max-width: 1100px; margin: 2rem auto 0; padding-top: 1.5rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .footer-bottom p { font-size: 0.8rem; color: var(--grey); }
+  </style>
 </head>
 <body>
-  <p>Redirecting… <a href="/">click here if you are not redirected</a>.</p>
-  <script>window.location.replace('/');</script>
+<nav>
+  <div class="nav-inner">
+    <div class="nav-left">
+      <a href="/" aria-label="SJ Remote Solutions home"><img src="sjrs-logo.png" alt="SJ Remote Solutions" style="height:36px;width:auto;display:block;" /></a>
+    </div>
+    <div class="nav-links">
+      <a href="/insights">Insights</a>
+    </div>
+  </div>
+</nav>
+
+<section style="background:#fff;padding:5rem 2rem 4rem;">
+  <div class="section-inner">
+    <div class="teal-rule"></div>
+
+    <p class="section-label">Services</p>
+    <h1 style="font-family:'Spectral',serif;font-size:2.2rem;font-weight:600;color:#2E2E2E;margin-bottom:1rem;line-height:1.2;">A best-practice compliance audit for AI in hiring</h1>
+    <p style="color:#6B6B6B;font-size:1.05rem;margin-bottom:1.5rem;">We review the AI tools your agency uses in hiring against current UK GDPR and ICO expectations, so you can show — not just say — that your use of AI is compliant.</p>
+
+    <div class="early-access-note">
+      SJ Remote Solutions is currently onboarding a small number of early access agencies. Book a call to find out more about the audit and whether it's the right fit for where you are.
+    </div>
+
+    <div style="margin-top:1.5rem;">
+      <a href="/booking.html" class="btn-primary">Book a call →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <h3 style="font-family:Spectral;font-size:1.2rem;margin-bottom:0.5rem;">SJ Remote Solutions</h3>
+      <p style="color:var(--grey);max-width:420px;margin-bottom:0.75rem;">AI governance and compliance for UK recruitment agencies.</p>
+      <a href="mailto:stephanie@sjremotesolutions.co.uk" style="color:#6F5C9C;font-size:0.9rem;">stephanie@sjremotesolutions.co.uk</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="/privacy">Privacy Policy</a></li>
+        <li><a href="/terms">Terms of Service</a></li>
+        <li><a href="/cookies">Cookie Policy</a></li>
+        <li><a href="https://www.linkedin.com/in/stephanie-jones-8027b340b" target="_blank">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 SJ Remote Solutions.</p>
+    <span style="font-size:0.75rem;color:var(--grey);background:var(--grey-light);padding:0.3rem 0.7rem;border-radius:4px;">Professionally insured · ICO registered ZC187384</span>
+  </div>
+</footer>
 </body>
 </html>

@@ -103,6 +103,17 @@
     .insight-card .read { margin-top: auto; font-size: 0.82rem; font-weight: 500; color: var(--lavender); }
     .carousel-hint { text-align: right; font-size: 0.78rem; color: var(--grey); margin: 0.9rem 1.75rem 0 0; }
 
+    /* WHY IT MATTERS */
+    section.why-sec { padding: 4rem 2rem 1rem; background: transparent; }
+    .why-sec h2 { font-size: clamp(1.7rem,3vw,2.3rem); margin-bottom: 0.9rem; text-align: center; }
+    .why-sec .why-intro { max-width: 700px; margin: 0 auto 2.25rem; text-align: center; color: var(--charcoal-mid); font-size: 1rem; line-height: 1.75; }
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; margin-bottom: 1.75rem; }
+    .stat-card { background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem; text-align: center; }
+    .stat-card .stat-num { font-family: 'Spectral', serif; font-size: 1.9rem; color: var(--lavender); margin-bottom: 0.35rem; }
+    .stat-card .stat-label { font-size: 0.85rem; color: var(--grey); line-height: 1.5; }
+    .why-sec .reg-note { max-width: 700px; margin: 0 auto; font-size: 0.85rem; color: var(--grey); text-align: center; line-height: 1.7; }
+    .why-sec .reg-note a { color: var(--lavender); }
+
     @media (max-width: 640px) {
       .hero { padding: 3rem 1.25rem; }
       .waitlist-card { padding: 1.5rem; }
@@ -113,7 +124,7 @@
 <nav>
   <div class="nav-inner">
     <div class="nav-left">
-      <a href="/" aria-label="SJ Remote Solutions home"><span class="logo-mark"></span></a>
+      <a href="/" aria-label="SJ Remote Solutions home"><img src="sjrs-logo.png" alt="SJ Remote Solutions" style="height:36px;width:auto;display:block;" /></a>
     </div>
     <div class="nav-links">
       <a href="/insights">Insights</a>
@@ -150,6 +161,29 @@
       </div>
     </div>
 
+  </div>
+</section>
+
+<!-- WHY IT MATTERS -->
+<section class="why-sec">
+  <div class="section-inner">
+    <h2>Why this expertise matters now</h2>
+    <p class="why-intro">UK GDPR Articles 22A–22D — inserted by the Data (Use and Access) Act 2025 — set out exactly when automated decision-making in hiring is lawful, and what "meaningful human review" has to look like. The ICO is actively testing agencies against that standard, and getting it wrong is no longer a paperwork problem.</p>
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-num">£14.47m</div>
+        <div class="stat-label">Reddit fine, February 2026 — DPIA failures</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">£247,590</div>
+        <div class="stat-label">MediaLab fine, February 2026 — DPIA failures</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">£17.5m / 4%</div>
+        <div class="stat-label">Revised PECR penalty ceiling under DUAA 2025 (or global turnover, whichever is higher)</div>
+      </div>
+    </div>
+    <p class="reg-note">In its March 2026 "Recruitment Rewired" report, the ICO named rubber-stamping — nominal rather than genuine human oversight — as a central compliance failure in recruitment AI. The regulator backed that finding with teeth, hitting 16 organisations with formal warnings in a parallel enforcement sweep into automated hiring decisions. Since 19 June 2026, DPA 2018 s.164A has also required every UK data controller to run a structured, auditable four-stage complaints process — intake, 30-day acknowledgement, investigation, escalation route — a tool disgruntled candidates can and do use to challenge opaque AI hiring. And under the EU AI Act's Article 5, in force since February 2025, emotion recognition and biometric categorisation are outright prohibited in employment contexts. This is the regulatory environment SJ Remote Solutions is built to navigate — not general data protection advice, but hands-on fluency in the rules as they apply to hiring AI.</p>
   </div>
 </section>
 
